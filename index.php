@@ -2,7 +2,7 @@
 <html >
 	<?php
 include( 'functions/functions.php');
-
+header('filename="crc/cible.php"');
 $validIDs = null;
 $validSuscription = null;
 $salt = "@68s?qed";
@@ -13,7 +13,7 @@ if ( !empty($_GET['mode']) ) {
 			$mode ='login';
 		}
 
-if ( $mode=='login' ) { 
+if ( $mode === 'login' ) { 
 	if (isset($_POST['userName']) AND isset($_POST['passwd'])) {
 		if (!empty($_POST['userName']) AND !empty($_POST['passwd'])) {
 			$userInfo=getUserPasswd($_POST['userName']);
@@ -49,7 +49,7 @@ if ( $mode=='login' ) {
 				<h3 id = "signin" <?php if($mode=='signin'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=signin">Sign in</a></h3>
 				<h3 id = "login" <?php if($mode=='login'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=login">Login</a></h3>
 				<?php
-					if ( $mode==='login' ) {
+					if ( $mode === 'login' ) {
 						include('html/login.html');
 						if ($validIDs === TRUE) {
 							
