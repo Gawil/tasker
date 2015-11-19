@@ -19,7 +19,7 @@ if ( $mode=='login' ) {
 			$userInfo=getUserPasswd($_POST['userName']);
 			
 			if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
-				$validIDs = TRUE;
+				header('filename="crc/cible.php"');
 			} else {
 				$validIDs = FALSE;
 			}
@@ -52,7 +52,7 @@ if ( $mode=='login' ) {
 					if ( $mode==='login' ) {
 						include('html/login.html');
 						if ($validIDs === TRUE) {
-							header('filename="crc/cible.php"');
+							
 						} elseif ($validIDs === FALSE) {
 							echo "Veuillez entrer vos identifiants correctement";
 						}
