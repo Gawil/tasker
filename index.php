@@ -50,10 +50,10 @@ if ( $mode=='login' ) {
 				<h3 id = "login" <?php if($mode=='login'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=login">Login</a></h3>
 				<?php
 					if ( $mode==='login' ) {
+						include('html/login.html');
 						if ($validIDs === TRUE) {
 							header('filename="crc/cible.php"');
 						} elseif ($validIDs === FALSE) {
-							include('html/login.html');
 							echo "Veuillez entrer vos identifiants correctement";
 						}
 					} else {
