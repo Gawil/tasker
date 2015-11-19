@@ -19,7 +19,7 @@ if ( $mode === 'login' ) {
 			$userInfo=getUserPasswd($_POST['userName']);
 			
 			if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
-				$validIDs = TRUE
+				$validIDs = TRUE;
 			} else {
 				$validIDs = FALSE;
 			}
