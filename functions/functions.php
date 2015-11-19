@@ -19,27 +19,27 @@ function getUserPasswd( $userName ) {
 	return $user;
 }
 
-function checkExistingUser( $userMail ) {
+function checkExistingUser( $userName ) {
 	$bool = FALSE;
-	if ( file_exists("database/$userMail.usr") )
+	if ( file_exists("database/$userName.usr") )
 	{
 		$bool = TRUE;
 	}
 	return $bool;	
 }
 
-function registerUser(  $userMail, $userName, $userPasswd, $salt ) {
+function registerUser( $userMail, $userName, $userPasswd, $salt ) {
 	$file = fopen("database/$userName.usr", "x");
 	if ( $file != null )
 	{
-		fputs( $file, '$userName\0');
+		fputs( $file, '$userName:$userMail\0');
 	}	
 	fclose($file);
 	$file=fopen("database/passwd", "a");
 	if ( $file != null )
 	{
 		$PasswdCrypt = sha1(sha1('$userPasswd'). $salt);
-		fputs( $file, '$userMail:$PasswdCrypt\0');
+		fputs( $file, '$userName:$PasswdCrypt\0' );
 	}	
 }
 ?>

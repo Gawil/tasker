@@ -26,10 +26,10 @@ if ( $mode=='login' ) {
 		}
 	}
 } else {	
-	if (isset($_POST['newMail']) AND isset($_POST['newName']) AND isset($_POST['newPasswd']))	{
-		if (!empty($_POST['newMail']) AND !empty($_POST['newName']) AND !empty($_POST['newPasswd'])) {
-			if (!checkExistingUser( $_POST['newMail'] ) ) {
-				registerUser( $_POST['newMail'], $_POST['newName'], $_POST['newPasswd'], $salt );
+	if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	{
+		if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd'])) {
+			if (!checkExistingUser( $_POST['newUserName'] ) ) {
+				registerUser( $_POST['newUserMail'], $_POST['newUserName'], $_POST['newUserPasswd'], $salt );
 			} else {
 				$validSuscription = FALSE;
 			}
