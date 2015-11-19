@@ -6,5 +6,5 @@
 		<title>Login</title>
 		<link rel="stylesheet" href="../css/style.css">
 	</head>
-	<p style="color: #FFF; font-size: 50px;">Bienvenue <?php echo $_POST['userName']; ?></p>
+	<p style="color: #FFF; font-size: 50px;">Bienvenuuue !!</p>
 </html>
