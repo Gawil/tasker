@@ -29,6 +29,12 @@ function checkExistingUser( $userName ) {
 }
 
 function registerUser( $userMail, $userName, $userPasswd, $salt ) {
+	$file = fopen("database/mail", "x");
+	if ( $file != null )
+	{
+		fputs( $file, '$userMail\0');
+	}	
+	fclose($file);
 	$file = fopen("database/$userName.usr", "x");
 	if ( $file != null )
 	{
