@@ -13,7 +13,7 @@ if ( !empty($_GET['mode']) ) {
 			$mode ='login';
 		}
 
-if ( $mode='login' ) { 
+if ( $mode=='login' ) { 
 	if (isset($_POST['userName']) AND isset($_POST['passwd'])) {
 		if (!empty($_POST['userName']) AND !empty($_POST['passwd'])) {
 			$userInfo=getUserPasswd($_POST['userName']);
