@@ -2,7 +2,7 @@
 <html >
 	<?php
 include( 'functions/functions.php');
-header('filename="crc/cible.php"');
+
 $validIDs = null;
 $validSuscription = null;
 $salt = "@68s?qed";
@@ -19,7 +19,7 @@ if ( $mode === 'login' ) {
 			$userInfo=getUserPasswd($_POST['userName']);
 			
 			if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
-				header('filename="crc/cible.php"');
+				$validIDs = TRUE
 			} else {
 				$validIDs = FALSE;
 			}
@@ -52,7 +52,7 @@ if ( $mode === 'login' ) {
 					if ( $mode === 'login' ) {
 						include('html/login.html');
 						if ($validIDs === TRUE) {
-							
+							header('Location: crc/cible.php');
 						} elseif ($validIDs === FALSE) {
 							echo "Veuillez entrer vos identifiants correctement";
 						}
