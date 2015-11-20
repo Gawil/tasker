@@ -4,7 +4,8 @@
 include( 'functions/functions.php');
 
 $validIDs = null;
-$validSuscription = null;
+$validSuscription1 = null;
+$validSuscription2 = null;
 $salt = "@68s?qed";
 
 if ( !empty($_GET['mode']) ) {
@@ -27,12 +28,14 @@ if ( $mode === 'login' ) {
 	}
 } else {	
 	if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	{
-		if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd'])) {
+		if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) ) {
 			if (!checkExistingUser( $_POST['newUserName'] ) ) {
 				registerUser( $_POST['newUserMail'], $_POST['newUserName'], $_POST['newUserPasswd'], $salt );
 			} else {
-				$validSuscription = FALSE;
+				$validSuscription1 = FALSE;
 			}
+		} else {
+			$validSuscription2 = FALSE;
 		}
 	}
 }		
@@ -58,8 +61,11 @@ if ( $mode === 'login' ) {
 						}
 					} else {
 						include('html/signin.html');
-						if ( $validSuscription === FALSE ) {
+						if ( $validSuscription1 === FALSE ) {
 							echo "Cette adresse mail est déjà utilisée";
+						}
+						if ( $validSuscription2 === FALSE ) {
+							echo "Veuillez renseigner les champs correctement";
 						}
 					}
 				?>

@@ -29,19 +29,19 @@ function checkExistingUser( $userName ) {
 }
 
 function registerUser( $userMail, $userName, $userPasswd, $salt ) {
-	$file = fopen("database/mail", "x");
+	$file = fopen("database/mail", "a+");
 	if ( $file != null )
 	{
 		fputs( $file, '$userMail\0');
 	}	
 	fclose($file);
-	$file = fopen("database/$userName.usr", "x");
+	$file = fopen("database/$userName.usr", "a+");
 	if ( $file != null )
 	{
 		fputs( $file, '$userName:$userMail\0');
 	}	
 	fclose($file);
-	$file=fopen("database/passwd", "a");
+	$file=fopen("database/passwd", "a+");
 	if ( $file != null )
 	{
 		$PasswdCrypt = sha1(sha1('$userPasswd'). $salt);
