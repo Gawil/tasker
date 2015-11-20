@@ -32,20 +32,23 @@ function registerUser( $userMail, $userName, $userPasswd, $salt ) {
 	$file = fopen("database/mail", "a+");
 	if ( $file != null )
 	{
-		fputs( $file, '$userMail\0');
+		fputs( $file, "$userMail\0");
+		fclose($file);
 	}	
-	fclose($file);
+	
 	$file = fopen("database/$userName.usr", "a+");
 	if ( $file != null )
 	{
-		fputs( $file, '$userName:$userMail\0');
+		fputs( $file, "$userName:$userMail\0");
+		fclose($file);
 	}	
-	fclose($file);
+	
 	$file=fopen("database/passwd", "a+");
 	if ( $file != null )
 	{
-		$PasswdCrypt = sha1(sha1('$userPasswd'). $salt);
-		fputs( $file, '$userName:$PasswdCrypt\0' );
+		$PasswdCrypt = sha1(sha1("$userPasswd"). $salt);
+		fputs( $file, "$userName:$PasswdCrypt\0" );
+		fclose($file);
 	}	
 }
 ?>
