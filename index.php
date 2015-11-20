@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html >
-	<?php
-include( 'functions/functions.php');
+<?php
 
-$validIDs = null;
-$validSuscription1 = null;
-$validSuscription2 = null;
-$salt = "@68s?qed";
+	include( 'functions/functions.php');
 
-if ( !empty($_GET['mode']) ) {
-			$mode = $_GET['mode'];
-		} else {
-			$mode ='login';
-		}
+	$validIDs = null;
+	$validSuscription1 = null;
+	$validSuscription2 = null;
+	$salt = "@68s?qed";
 
-if ( $mode === 'login' ) { 
-	if (isset($_POST['userName']) AND isset($_POST['passwd'])) {
-		if (!empty($_POST['userName']) AND !empty($_POST['passwd'])) {
-			$userInfo=getUserPasswd($_POST['userName']);
+	if ( !empty($_GET['mode']) ) {
+		$mode = $_GET['mode'];
+	} else {
+		$mode ='login';
+	}
+
+	if ( $mode === 'login' ) { 
+		if (isset($_POST['userName']) AND isset($_POST['passwd'])) {
+			if (!empty($_POST['userName']) AND !empty($_POST['passwd'])) {
+				$userInfo=getUserPasswd($_POST['userName']);
 			
-			if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
-				$validIDs = TRUE;
-			} else {
-				$validIDs = FALSE;
+				if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
+					$validIDs = TRUE;
+				} else {
+					$validIDs = FALSE;
+				}
 			}
 		}
-	}
-} else {	
-	if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	{
-		if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) ) {
-			if (!checkExistingUser( $_POST['newUserName'] ) ) {
-				registerUser( $_POST['newUserMail'], $_POST['newUserName'], $_POST['newUserPasswd'], $salt );
+	} else {	
+		if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	{
+			if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) ) {
+				if (!checkExistingUser( $_POST['newUserName'] ) ) {
+					registerUser( $_POST['newUserMail'], $_POST['newUserName'], $_POST['newUserPasswd'], $salt );
+				} else {
+					$validSuscription1 = FALSE;
+				}
 			} else {
-				$validSuscription1 = FALSE;
+				$validSuscription2 = FALSE;
 			}
-		} else {
-			$validSuscription2 = FALSE;
 		}
-	}
-}		
-	?>
+	}		
+?>
 	
 	<head>
 		<meta charset="UTF-8">
@@ -55,6 +56,7 @@ if ( $mode === 'login' ) {
 					if ( $mode === 'login' ) {
 						include('html/login.html');
 						if ($validIDs === TRUE) {
+							$_SESSION['userName'] = $_POST['userName'];
 							header('Location: crc/cible.php');
 						} elseif ($validIDs === FALSE) {
 							echo "Veuillez entrer vos identifiants correctement";
