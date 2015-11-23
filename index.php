@@ -4,7 +4,7 @@
 
 	include( 'functions/functions.php');
 
-	$validIDs = NULL;
+	$errorLogin = NULL;
 	$validSuscription1 = NULL;
 	$validSuscription2 = NULL;
 	$salt = "@68s?qed";
@@ -12,7 +12,9 @@
 	if ( !empty($_GET['mode']) ) 
 	{
 		$mode = $_GET['mode'];
-	} else {
+	} 
+	else 
+	{
 		$mode ='login';
 	}
 
@@ -25,16 +27,22 @@
 				$userInfo=getUserPasswd($_POST['userName']);
 				if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) 
 				{
-					$validIDs = 1;
-				} else {
-					$validIDs = 2;
+					$errorLogin = 1;
+				} 
+				else 
+				{
+					$errorLogin = 2;
 				}
-			} else {
+			} 
+			else 
+			{
 				if ( empty($_POST['userName']) ) 
 				{
-					$validIDs = 3;
-				} else {
-					$validIDs = 4;
+					$errorLogin = 3;
+				} 
+				else 
+				{
+					$errorLogin = 4;
 				}			
 			}
 		}
@@ -67,23 +75,32 @@
 				<?php
 					if ( $mode === 'login' ) {
 						include('html/login.html');
-						if ($validIDs === 1) {
+						if ($errorLogin === 1) {
 							$_SESSION['userName'] = $_POST['userName'];
 							header('Location: crc/cible.php');
-						} elseif ($validIDs === 2) {
+						} 
+						elseif ($errorLogin === 2) 
+						{
 							echo "Combinaison nom d'utilisateur/mot de passe incorrecte";
 						}
-						if ($validIDs === 3) {
+						if ($errorLogin === 3) 
+						{
 							echo "Veuillez entrer un nom d'utilisateur";
-						} elseif ( $validIDs === 4 ) {
+						} 
+						elseif ( $errorLogin === 4 ) 
+						{
 							echo "Veuillez entrer un mot de passe";
 						}
-					} else {
+					} 
+					else 
+					{
 						include('html/signin.html');
-						if ( $validSuscription1 === FALSE ) {
+						if ( $validSuscription1 === FALSE )
+						{
 							echo "Ce nom d'utilisateur est déjà utilisé";
 						}
-						if ( $validSuscription2 === FALSE ) {
+						if ( $validSuscription2 === FALSE )
+						{
 							echo "Veuillez renseigner les champs correctement";
 						}
 					}
