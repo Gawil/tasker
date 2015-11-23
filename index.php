@@ -4,29 +4,41 @@
 
 	include( 'functions/functions.php');
 
-	$validIDs = null;
-	$validSuscription1 = null;
-	$validSuscription2 = null;
+	$validIDs = NULL;
+	$validSuscription1 = NULL;
+	$validSuscription2 = NULL;
 	$salt = "@68s?qed";
 
-	if ( !empty($_GET['mode']) ) {
+	if ( !empty($_GET['mode']) ) 
+	{
 		$mode = $_GET['mode'];
 	} else {
 		$mode ='login';
 	}
 
-	if ( $mode === 'login' ) { 
-		if (isset($_POST['userName']) AND isset($_POST['passwd'])) {
-			if (!empty($_POST['userName']) AND !empty($_POST['passwd'])) {
+	if ( $mode === 'login' ) 
+	{		
+		if ( isset($_POST['userName']) AND isset($_POST['passwd']) ) 
+		{			
+			if ( !empty($_POST['userName']) AND !empty($_POST['passwd']) ) 
+			{				
 				$userInfo=getUserPasswd($_POST['userName']);
-			
-				if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
-					$validIDs = TRUE;
+				if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) 
+				{
+					$validIDs = 1;
 				} else {
-					$validIDs = FALSE;
+					$validIDs = 2;
 				}
+			} else {
+				if ( empty($_POST['userName']) ) 
+				{
+					$validIDs = 3;
+				} else {
+					$validIDs = 4;
+				}			
 			}
 		}
+		
 	} else {	
 		if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	{
 			if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) ) {
@@ -55,16 +67,21 @@
 				<?php
 					if ( $mode === 'login' ) {
 						include('html/login.html');
-						if ($validIDs === TRUE) {
+						if ($validIDs === 1) {
 							$_SESSION['userName'] = $_POST['userName'];
 							header('Location: crc/cible.php');
-						} elseif ($validIDs === FALSE) {
-							echo "Veuillez entrer vos identifiants correctement";
+						} elseif ($validIDs === 2) {
+							echo "Combinaison nom d'utilisateur/mot de passe incorrecte";
+						}
+						if ($validIDs === 3) {
+							echo "Veuillez entrer un nom d'utilisateur";
+						} elseif ( $validIDs === 4 ) {
+							echo "Veuillez entrer un mot de passe";
 						}
 					} else {
 						include('html/signin.html');
 						if ( $validSuscription1 === FALSE ) {
-							echo "Cette adresse mail est déjà utilisée";
+							echo "Ce nom d'utilisateur est déjà utilisé";
 						}
 						if ( $validSuscription2 === FALSE ) {
 							echo "Veuillez renseigner les champs correctement";
