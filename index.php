@@ -134,38 +134,7 @@
 		<title>Login</title>
 		<link rel="stylesheet" href="css/style.css">
 	</head>
-	<body>
-		<div class="container">
-			<div id="login-form">
-				<h3 id = "signin" <?php if($mode=='signin'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=signin">Sign in</a></h3>
-				<h3 id = "login" <?php if($mode=='login'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=login">Login</a></h3>
-				<?php
-					if ( $mode === 'login' ) {
-						include('html/login.html');
-						if ($errorLogin === 1) {
-							$_SESSION['userName'] = $_POST['userName'];
-							header('Location: crc/cible.php');
-						} 
-						elseif ($errorLogin === 2) 
-						{
-							echo "Combinaison nom d'utilisateur/mot de passe incorrecte";
-						}
-						if ($errorLogin === 3) 
-						{
-							echo "Veuillez entrer un nom d'utilisateur";
-						} 
-						elseif ( $errorLogin === 4 ) 
-						{
-							echo "Veuillez entrer un mot de passe";
-						}
-					} 
-					else 
-					{
-						include('html/signin.html');
-<<<<<<< HEAD
-<<<<<<< HEAD
-						if ( $error == 1 ) {
-							echo "Les mots de passe doivent correspondre !";
+	<body>pondre !";
 						}
 						if ( $error == 2 ) {
 							echo "Votre nom d'utilisateur est déjà utilisé.";
