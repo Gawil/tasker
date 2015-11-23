@@ -5,8 +5,7 @@
 	include( 'functions/functions.php');
 
 	$validIDs = null;
-	$validSuscription1 = null;
-	$validSuscription2 = null;
+	$errorSignin = null;
 	$salt = "@68s?qed";
 
 	if ( !empty($_GET['mode']) ) {
@@ -16,27 +15,48 @@
 	}
 
 	if ( $mode === 'login' ) { 
-		if (isset($_POST['userName']) AND isset($_POST['passwd'])) {
-			if (!empty($_POST['userName']) AND !empty($_POST['passwd'])) {
+		if (isset($_POST['userName']) AND isset($_POST['passwd']))
+		{
+			if (!empty($_POST['userName']) AND !empty($_POST['passwd']))
+			{
 				$userInfo=getUserPasswd($_POST['userName']);
 			
-				if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
+				if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] )
+				{
 					$validIDs = TRUE;
-				} else {
+				}
+				else
+				{
 					$validIDs = FALSE;
 				}
 			}
 		}
-	} else {	
-		if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	{
-			if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) ) {
-				if (!checkExistingUser( $_POST['newUserName'] ) ) {
-					registerUser( $_POST['newUserMail'], $_POST['newUserName'], $_POST['newUserPasswd'], $salt );
-				} else {
-					$validSuscription1 = FALSE;
+	}
+	else
+	{	
+		if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))
+		{
+			if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']))
+			{
+				if (!checkExistingUser( $_POST['newUserName'] ) )
+				{
+					if ($_POST['newUserPasswd'] == $_POST['newUserPasswdBis'])
+					{
+						registerUser( $_POST['newUserMail'], $_POST['newUserName'], $_POST['newUserPasswd'], $salt );
+					}
+					else
+					{
+						$errorSignin = 1;
+					}
 				}
-			} else {
-				$validSuscription2 = FALSE;
+				else
+				{
+					$errorSignin = 2;
+				}
+			}
+			else
+			{
+				$errorSignin = 3;
 			}
 		}
 	}		
@@ -63,11 +83,14 @@
 						}
 					} else {
 						include('html/signin.html');
-						if ( $validSuscription1 === FALSE ) {
-							echo "Cette adresse mail est déjà utilisée";
+						if ( $error == 1 ) {
+							echo "Les mots de passe doivent correspondre !";
 						}
-						if ( $validSuscription2 === FALSE ) {
-							echo "Veuillez renseigner les champs correctement";
+						if ( $error == 2 ) {
+							echo "Votre nom d'utilisateur est déjà utilisé.";
+						}
+						if ( $error === 3 ) {
+							echo "Veuillez renseigner TOUS les champs.";
 						}
 					}
 				?>
