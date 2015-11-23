@@ -6,5 +6,5 @@
 		<title>Login</title>
 		<link rel="stylesheet" href="../css/style.css">
 	</head>
-	<p style="color: #FFF; font-size: 50px;">Bienvenuuue <?php echo $_SESSION['userName'];  ?>!!</p>
+	<p style="color: #FFF; font-size: 50px;">Bienvenuuue <?php echo $_SESSION['userName'];  ?> !!</p>
 </html>
