@@ -19,13 +19,34 @@ function getUserPasswd( $userName ) {
 	return $user;
 }
 
-function checkExistingUser( $userName ) {
-	$bool = FALSE;
-	if ( file_exists("database/$userName.usr") )
+function checkExistingUser( $userName, $userMail ) 
+{
+	$retour = 0;
+	$file=fopen("database/mail", "r");
+	if ( $file !== false ) 
 	{
-		$bool = TRUE;
+		while (!feof($file) && $retour===0) 
+		{
+			$line=fgets($file);
+			$line=substr($line,0,strlen($line)-1);
+			if ( $line === $userMail )
+			{
+				$retour = 1;
+			}
+		}
+		if ( $retour===1 ) 
+		{
+			if ( file_exists("database/$userName.usr") )
+			{
+				$retour = 2;
+			}
+		}
+		else
+		{
+			$retour = 3;
+		}
 	}
-	return $bool;	
+	return $retour;	
 }
 
 function registerUser( $userMail, $userName, $userPasswd, $salt ) {
