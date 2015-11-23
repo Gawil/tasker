@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html >
 <?php
-
 	include( 'functions/functions.php');
 
 	$errorLogin = NULL;
 	$validSuscription1 = NULL;
 	$validSuscription2 = NULL;
 	$salt = "@68s?qed";
-
+	
+	//Mode Login/Sign In Test
 	if ( !empty($_GET['mode']) ) 
 	{
 		$mode = $_GET['mode'];
@@ -18,6 +18,7 @@
 		$mode ='login';
 	}
 
+	//Login Page Tests
 	if ( $mode === 'login' ) 
 	{		
 		if ( isset($_POST['userName']) AND isset($_POST['passwd']) ) 
@@ -46,11 +47,12 @@
 				}			
 			}
 		}
-		
+	
+	//Sign In Page Tests	
 	} else {	
 		if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	{
 			if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) ) {
-				if (!checkExistingUser( $_POST['newUserName'] ) ) {
+				if (!checkExistingUser( $_POST['newUserName'], $_POST['newUserName'] ) ) {
 					registerUser( $_POST['newUserMail'], $_POST['newUserName'], $_POST['newUserPasswd'], $salt );
 				} else {
 					$validSuscription1 = FALSE;
