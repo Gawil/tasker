@@ -65,7 +65,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Login</title>
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/index.css">
 	</head>
 	<body>
 		<div class="container">
@@ -77,7 +77,7 @@
 						include('html/login.html');
 						if ($errorLogin === 1) {
 							$_SESSION['userName'] = $_POST['userName'];
-							header('Location: crc/cible.php');
+							header('Location: crc/tasker.php');
 						} 
 						elseif ($errorLogin === 2) 
 						{
