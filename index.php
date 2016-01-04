@@ -3,8 +3,7 @@
 <?php
 	include( 'functions/functions.php');
 	$errorLogin = NULL;
-	$errorSubscription1 = NULL;
-	$errorSubscription2 = NULL;
+	$errorSubscription = NULL;
 	$salt = "@68s?qed";
 	
 	//Mode Login/Sign In Test
@@ -40,14 +39,13 @@
 	else {	
 		if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	{
 			if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) ) {
-				if (!checkExistingUser( $_POST['newUserName'], $_POST['newUserName'] ) ) {
-					registerUser( $_POST['newUserMail'], $_POST['newUserName'], $_POST['newUserPasswd'], $salt );
-				} else {
-					$errorSubscription1 = FALSE;
+				$errorSubscription = checkExistingUser( $_POST['newUserName'], $_POST['newUserMail'] );
+				if ($errorSubscription === 0) {
+					registerUser( $_POST['newUserName'], $_POST['newUserMail'], $_POST['newUserPasswd'], $salt );
 				}
 			}
 			else {
-				$errorSubscription2 = FALSE;
+				$errorSubscription = 4;
 			}
 		}
 	}		
@@ -65,7 +63,7 @@
 				<h3 id = "login" <?php if($mode=='login'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=login">Login</a></h3>
 				<?php
 					if ( $mode === 'login' ) {
-						include('html/login.html');
+						include('html/login.php');
 						if ($errorLogin === 1) {
 							$_SESSION['userName'] = $_POST['userName'];
 							header('Location: crc/tasker.php');
@@ -81,11 +79,11 @@
 						}
 					} 
 					else {
-						include('html/signin.html');
-						if ( $errorSubscription1 === FALSE ) {
+						include('html/signin.php');
+						if ( $errorSubscription1 === 1 ) {
 							echo "Ce nom d'utilisateur est déjà utilisé";
 						}
-						if ( $errorSubscription2 === FALSE ) {
+						if ( $errorSubscription2 === 4 ) {
 							echo "Veuillez renseigner les champs correctement";
 						}
 					}

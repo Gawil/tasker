@@ -3,11 +3,11 @@ function getUserPasswd( $userName ) {
 	$file=fopen("database/passwd", "r");
 	$user=null;
 	if ( $file !== false ) {
-		while (!feof($file) && $user===null) {
+		while (!feof($file) && $user === null) {
 			$line=fgets($file);
 			$line=substr($line,0,strlen($line)-1);
 			$info=explode( ':', $line);
-			if( count($info) === 2 && $info[0]===$userName ) {
+			if( count($info) === 2 && $info[0] === $userName ) {
 				$user=array(
 					'name' => $userName,
 					'hash' => $info[1]
@@ -23,33 +23,27 @@ function checkExistingUser( $userName, $userMail )
 {
 	$retour = 0;
 	$file=fopen("database/email", "r");
-	if ( $file !== false ) 
-	{
-		while (!feof($file) && $retour===0) 
-		{
+	if ( $file !== false ) {
+		while (!feof($file) && $retour === 0) {
 			$line=fgets($file);
 			$line=substr($line,0,strlen($line)-1);
-			if ( $line === $userMail )
-			{
-				$retour = 1;
+			if ( $line === $userMail ) {
+				$retour = 1;	//adresse mail déjà utilisée
 			}
 		}
-		if ( $retour===1 ) 
-		{
-			if ( file_exists("database/$userName.usr") )
-			{
-				$retour = 2;
+		if ( file_exists("database/$userName.usr") ) {
+			if ( $retour === 1 ) {
+				$retour = 2;	//adresse mail ET login déjà utilisés
 			}
-		}
-		else
-		{
-			$retour = 3;
+			else {
+				$retour = 3	//juste login déjà utilisé
+			}
 		}
 	}
 	return $retour;	
 }
 
-function registerUser( $userMail, $userName, $userPasswd, $salt ) {
+function registerUser( $userName, $userMail, $userPasswd, $salt ) {
 	$file = fopen("database/email", "a+");
 	if ( $file != null )
 	{
