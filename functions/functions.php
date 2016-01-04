@@ -36,7 +36,7 @@ function checkExistingUser( $userName, $userMail )
 				$retour = 2;	//adresse mail ET login déjà utilisés
 			}
 			else {
-				$retour = 3	//juste login déjà utilisé
+				$retour = 3;	//juste login déjà utilisé
 			}
 		}
 	}

@@ -80,12 +80,6 @@
 					} 
 					else {
 						include('html/signin.php');
-						if ( $errorSubscription1 === 1 ) {
-							echo "Ce nom d'utilisateur est déjà utilisé";
-						}
-						if ( $errorSubscription2 === 4 ) {
-							echo "Veuillez renseigner les champs correctement";
-						}
 					}
 				?>
 			</div>
