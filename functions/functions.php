@@ -22,7 +22,7 @@ function getUserPasswd( $userName ) {
 function checkExistingUser( $userName, $userMail ) 
 {
 	$retour = 0;
-	$file=fopen("database/mail", "r");
+	$file=fopen("database/email", "r");
 	if ( $file !== false ) 
 	{
 		while (!feof($file) && $retour===0) 
@@ -50,7 +50,7 @@ function checkExistingUser( $userName, $userMail )
 }
 
 function registerUser( $userMail, $userName, $userPasswd, $salt ) {
-	$file = fopen("database/mail", "a+");
+	$file = fopen("database/email", "a+");
 	if ( $file != null )
 	{
 		fputs( $file, "$userMail\0");
