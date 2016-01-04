@@ -1,0 +1,10 @@
+body 
+{
+	background-image: url("../img/background.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	color: #999;
+	font: 400 16px/1.5em sans-serif;
+	margin: 0;
+}

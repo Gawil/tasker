@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html >
 	<head>
+		
 		<meta charset="UTF-8">
 		<title>Tasker</title>
-		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/tasker.css">
 	</head>
 	
 	<body>
