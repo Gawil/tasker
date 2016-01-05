@@ -28,15 +28,15 @@ function checkExistingUser( $userName, $userMail )
 			$line=fgets($file);
 			$line=substr($line,0,strlen($line)-1);
 			if ( $line === $userMail ) {
-				$retour = 1;	//adresse mail déjà utilisée
+				$retour = 1;	// adresse mail déjà utilisée
 			}
 		}
 		if ( file_exists("database/$userName.usr") ) {
 			if ( $retour === 1 ) {
-				$retour = 2;	//adresse mail ET login déjà utilisés
+				$retour = 2;	// adresse mail ET login déjà utilisés
 			}
 			else {
-				$retour = 3;	//juste login déjà utilisé
+				$retour = 3;	// juste login déjà utilisé
 			}
 		}
 	}
@@ -47,14 +47,14 @@ function registerUser( $userName, $userMail, $userPasswd, $salt ) {
 	$file = fopen("database/email", "a+");
 	if ( $file != null )
 	{
-		fputs( $file, "$userMail\0");
+		fprintf( $file, "$userMail\n");
 		fclose($file);
 	}	
 	
 	$file = fopen("database/$userName.usr", "a+");
 	if ( $file != null )
 	{
-		fputs( $file, "$userName:$userMail\0");
+		fprintf( $file, "$userName:$userMail\n");
 		fclose($file);
 	}	
 	
@@ -62,7 +62,7 @@ function registerUser( $userName, $userMail, $userPasswd, $salt ) {
 	if ( $file != null )
 	{
 		$PasswdCrypt = sha1(sha1("$userPasswd"). $salt);
-		fputs( $file, "$userName:$PasswdCrypt\0" );
+		fprintf( $file, "$userName:$PasswdCrypt\n");
 		fclose($file);
 	}	
 }
