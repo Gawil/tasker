@@ -21,7 +21,7 @@ function getUserPasswd( $userName ) {
 
 function checkExistingUser( $userName, $userMail ) 
 {
-	$retour = 0;
+	$retour = 0;	// tout va bien
 	$file=fopen("database/email", "r");
 	if ( $file !== false ) {
 		while (!feof($file) && $retour === 0) {

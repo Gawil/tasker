@@ -64,20 +64,7 @@
 				<?php
 					if ( $mode === 'login' ) {
 						include('html/login.php');
-						if ($errorLogin === 1) {
-							$_SESSION['userName'] = $_POST['userName'];
-							header('Location: crc/tasker.php');
-						} 
-						elseif ($errorLogin === 2) {
-							echo "Combinaison nom d'utilisateur/mot de passe incorrecte";
-						}
-						if ($errorLogin === 3) {
-							echo "Veuillez entrer un nom d'utilisateur";
-						} 
-						elseif ( $errorLogin === 4 ) {
-							echo "Veuillez entrer un mot de passe";
-						}
-					} 
+					}
 					else {
 						include('html/signin.php');
 					}
