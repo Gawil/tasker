@@ -1,5 +1,5 @@
 # tasker
 
-A faire :
-	- Interface utilisateur
-	- Gestion tâches (en cours, à venir, faites ?)
+A faire :\n
+	- Interface utilisateur\n
+	- Gestion tâches (en cours, à venir, faites ?)\n
