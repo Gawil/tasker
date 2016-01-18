@@ -30,7 +30,7 @@
 					$errorLogin = 3;
 				} else {
 					$errorLogin = 4;
-				}			
+				}
 			}
 		}
 	
@@ -42,6 +42,8 @@
 				$errorSubscription = checkExistingUser( $_POST['newUserName'], $_POST['newUserMail'] );
 				if ($errorSubscription === 0) {
 					registerUser( $_POST['newUserName'], $_POST['newUserMail'], $_POST['newUserPasswd'], $salt );
+					$_SESSION['userName'] = $_POST['newUserName'];
+					header('Location: crc/tasker.php');
 				}
 			}
 			else {
