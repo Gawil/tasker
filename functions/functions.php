@@ -22,7 +22,7 @@ function getUserPasswd( $userName ) {
 function checkExistingUser( $userName, $userMail ) 
 {
 	$retour = 0;	// tout va bien
-	$file=fopen("database/email", "r");
+	$file = fopen("database/email", "r");
 	if ( $file !== false ) {
 		while (!feof($file) && $retour === 0) {
 			$line=fgets($file);
@@ -40,7 +40,7 @@ function checkExistingUser( $userName, $userMail )
 			}
 		}
 	}
-	return $retour;	
+	return $retour;
 }
 
 function registerUser( $userName, $userMail, $userPasswd, $salt ) {
@@ -66,4 +66,23 @@ function registerUser( $userName, $userMail, $userPasswd, $salt ) {
 		fclose($file);
 	}	
 }
+
+function readTask($fichier) {
+	fscanf($fichier, "%d", $id);
+	echo "<h2 style=\"font-size: 35px; margin-bottom: 0px;\">Tache n°$id</h2>";
+	$title = fgets($fichier);
+	echo "<h2 style=\"font-size: 30px; margin-bottom: 0px;\">$title</h2>";
+	$date = fgets($fichier);
+	echo "<h3 style=\"font-size: 20px; text-align: right; margin-top: 0px;\">$date</h3>";
+	$ligne = fgets($fichier);
+	echo "<p>";
+	while(!(feof($fichier)) && (substr($ligne, 0, 2) != "##")) {
+		echo "$ligne";
+		echo "<br />";
+		$ligne = fgets($fichier);
+	}
+	echo "</p>";
+	return ftell($fichier);
+}
+
 ?>

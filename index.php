@@ -2,6 +2,12 @@
 <html >
 <?php
 	include( 'functions/functions.php');
+	chmod("database/todo.task", 0677);
+	chmod("database/wip.task", 0677);
+	chmod("database/done.task", 0644);
+	chmod("database/toolate.task", 0644);
+	chmod("database/email", 0644);
+	chmod("database/passwd", 0644);
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
 	$salt = "@68s?qed";
