@@ -85,4 +85,34 @@ function readTask($fichier) {
 	return ftell($fichier);
 }
 
+function readTaskFull($nomfichier, $cur) {
+	$fichier = fopen($nomfichier, "r");
+	fseek($fichier, $cur);
+	if ($fichier) {
+		fscanf($fichier, "%d", $id);
+		echo "<h2 style=\"font-size: 35px; margin-bottom: 0px;\">Tache n°$id</h2>";
+		$title = fgets($fichier);
+		echo "<h2 style=\"font-size: 30px; margin-bottom: 0px;\">$title</h2>";
+		$date = fgets($fichier);
+		echo "<h3 style=\"font-size: 20px; text-align: right; margin-top: 0px;\">$date</h3>";
+		$ligne = fgets($fichier);
+		echo "<p>";
+		while(!(feof($fichier)) && (substr($ligne, 0, 2) != "##")) {
+			echo "$ligne";
+			echo "<br />";
+			$ligne = fgets($fichier);
+		}
+		echo "</p>";
+		fclose($fichier);
+	}
+}
+
+function createTask($filename, $title, $date, $content) {
+	$fichier = fopen($filename, "a+");
+	fprintf($fichier, "##\n42\n");
+	fprintf($fichier, "%s\n", $title);
+	fprintf($fichier, "%s\n", $date);
+	fprintf($fichier, "%s\n", $content);
+	fclose($fichier);
+}
 ?>

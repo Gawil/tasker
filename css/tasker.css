@@ -30,9 +30,41 @@ header:hover
 	height: 500px;
 }
 
-.postit
+.postcontainer
 {
 	display: block;
+	width: 380px;
+	height: 430px;
+	
+	/* Défaut */
+	transform: rotate(-5deg);
+	/* Firefox */
+	-moz-transform: rotate(-5deg);
+	/* Safari+Chrome */
+	-webkit-transform: rotate(-5deg);
+	/* Internet Explorer 9.0*/
+	-ms-transform: rotate(-5deg);
+	/* Opera */
+	-o-transform: rotate(-5deg);
+}
+
+input[type="button"]
+{
+	position: relative;
+	top: 2%;
+	left: 40%;
+	border-radius: 20px;
+	background: #dd6;
+}
+
+input[type="button"]:hover
+{
+	background: #aa4;
+	cursor: pointer;
+}
+
+.postit
+{
 	font-family:"Reenie Beanie", arial, sans-serif;
 	font-size: 200%;
 	color: #000;
@@ -42,47 +74,47 @@ header:hover
 	background-color: #ffc;
 	border-bottom-right-radius: 50px 10px;
 	
-	
 	/* Défaut */
 	box-shadow: 15px 15px 20px rgba(10, 10, 10, 1);
-	transform: rotate(-5deg);
 	background: linear-gradient(135deg, #ff7 80%, #ffc 100%);
 	/* Firefox */
 	-moz-box-shadow: 15px 15px 20px rgba(10, 10, 10, 1);
-	-moz-transform: rotate(-5deg);
 	background: -moz-linear-gradient(-45deg, #ff7 80%, #ffc 100%);
 	/* Safari+Chrome */
 	-webkit-box-shadow: 10px 10px 15px rgba(10, 10, 10, 1);
-	-webkit-transform: rotate(-5deg);
-	background: -webkit-linear-gradient(135deg, #ff7 80%, #ffc 100%);
-	/* Internet Explorer 9.0*/
-	-ms-transform: rotate(-5deg);
+	background: -webkit-linear-gradient(-45deg, #ff7 80%, #ffc 100%);
 	/* Opera */
-	-o-transform: rotate(-5deg);
 	background: -o-linear-gradient(135deg, #ff7 80%, #ffc 100%);
+	
 }
 
 .postit:hover
 {
-	/*background: #222;
-	color: #ff7;*/
+	background: #dd5;
 	cursor: pointer;
 }
 
-#todo
+#todocontainer
 {
 	float: left;
 	margin-left: 3%;
 }
 
-#wip
+#wipcontainer
 {
 	margin-top: 50px;
 	margin-left: 43%;
 }
 
-#done
+#donecontainer
 {
-	margin-top: 50px;
-	margin-left: 43%;
+	float: left;
+	margin-top: 10px;
+	margin-left: 18%;
+}
+
+#toolatecontainer
+{
+	margin-top: 10px;
+	margin-left: 58%;
 }
