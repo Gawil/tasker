@@ -33,7 +33,7 @@ function checkExistingUser( $userName, $userMail )
 				$retour = 1;	// e-mail adress already used
 			}
 		}
-		if ( file_exists("database/$userName.usr") ) {
+		if ( file_exists("database/users/$userName.usr") ) {
 			if ( $retour === 1 ) {
 				$retour = 2;	// e-mail adress and login already used
 			}
@@ -53,7 +53,7 @@ function registerUser( $userName, $userMail, $userPasswd, $salt ) {
 		fclose($file);
 	}	
 /* creating user file in database */	
-	$file = fopen("database/$userName.usr", "a+");
+	$file = fopen("database/users/$userName.usr", "a+");
 	if ( $file != null )
 	{
 		fprintf( $file, "$userName:$userMail\n");
