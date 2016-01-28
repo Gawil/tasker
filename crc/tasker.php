@@ -10,17 +10,17 @@
 				$content = $_GET['content'];
 				$date = date("d/m/Y");
 				if (date_isInf($date, $datedeb)) {
-					$filename = "todo.task";
+					$folder = "todo";
 				}
 				else {
 					if (date_isInf($datefin, $date)) {
-						$filename = "toolate.task";
+						$folder = "dead";
 					}
 					else {
-						$filename = "wip.task";
+						$folder = "wip";
 					}
 				}
-				createTask($filename, $title, $datedeb, $content);
+				createTask($folder, $title, $datedeb, $content);
 				echo "<script>alert('La tâche a été créée avec succès !');</script>";
 			}
 			else {
@@ -30,8 +30,8 @@
 		//createTask("../database/done.task", "Youpi", "99/55/4123", "Ceci est un test\nyoupi youpi\nligne 3 !!");
 	?>
 	<head>
-		<script type="text/javascript">var curTodo = 0; var curWIP = 0; var curDone = 0; var curTooLate = 0;</script>
-		<script type="text/javascript">var curTodoAvant = 0; var curWIPAvant = 0; var curDoneAvant = 0; var curTooLateAvant = 0;</script>
+		<script type="text/javascript">var curTodo = 0; var curWIP = 0; var curDone = 0; var curDead = 0;</script>
+		<script type="text/javascript">var curTodoAvant = 0; var curWIPAvant = 0; var curDoneAvant = 0; var curDeadAvant = 0;</script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script>
 			function displayNextTodo() {
@@ -61,11 +61,11 @@
 					}
 				);
 			}
-			function displayNextTooLate() {
+			function displayNextDead() {
 				$(document).ready(
 					function() {
-						curTooLateAvant = curTooLate;
-						$("#toolate").load("taskdisplayer.php?cursor="+curTooLate+"&file=toolate.task");
+						curDeadAvant = curDead;
+						$("#dead").load("taskdisplayer.php?cursor="+curDead+"&file=dead.task");
 						$.ajaxSetup({ cache: false });
 					}
 				);
@@ -82,7 +82,7 @@
 						document.location.href = "task.php?nomfichier=done.task&cur="+curDoneAvant;
 						break;
 					case 4:
-						document.location.href = "task.php?nomfichier=toolate.task&cur="+curTooLateAvant;
+						document.location.href = "task.php?nomfichier=dead.task&cur="+curDeadAvant;
 						break;
 					default:
 				} 
@@ -96,12 +96,12 @@
 	</head>
 	<body>
 		<header>
-			<p style="color: #FFF; font-size: 50px; text-align: left; padding-left: 30px;">Bienvenue <?php echo '<span style="color: #f00;">' . $_SESSION['userName'] . '</span>'; ?> !</p>
-			
+			<p style="color: #FFF; font-size: 50px; text-align: left; padding-left: 30px; max-width: 600px; float: left;">Bienvenue <?php echo '<span style="color: #f00;">' . $_SESSION['userName'] . '</span>'; ?> !</p>
+			<input class="creator" type="button" onclick="self.location.href='taskCreator.php'"></input>
 		</header>
 		
 		<div class="container">
-			<input type="button" onclick="self.location.href='taskCreator.php'"></input>
+			
 			<div class="postcontainer" id ="todocontainer">
 				<div class="postit" id="todo" onclick="displayCurrentTask(1);">
 					<br />
@@ -135,8 +135,8 @@
 				</div>
 				<input type="button" value="SUIVANT" onclick="displayNextDone();"></input>
 			</div>
-			<div class="postcontainer" id ="toolatecontainer">
-				<div class="postit" id="toolate" onclick="displayCurrentTask(4);">
+			<div class="postcontainer" id ="deadcontainer">
+				<div class="postit" id="dead" onclick="displayCurrentTask(4);">
 					<br />
 					<h1 style="font-size: 40px; text-align: center; margin: 0px;">Tâches décédées</h1>
 					<br />
@@ -144,7 +144,7 @@
 					<h3 style="font-size: 25px; text-align: center; margin-top: 0px;">Veuillez cliquer sur <span style="color: #f00;">Suivant</span> pour afficher la prochaine tâche</h3>
 					<?php include('taskdisplayer.php'); ?>
 				</div>
-				<input type="button" value="SUIVANT" onclick="displayNextTooLate();"></input>
+				<input type="button" value="SUIVANT" onclick="displayNextDead();"></input>
 			</div>
 		</div>
 	</body>

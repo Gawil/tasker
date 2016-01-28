@@ -2,10 +2,6 @@
 <html >
 <?php
 	include( 'functions/functions.php');
-	chmod("database/todo.task", 0644);
-	chmod("database/wip.task", 0644);
-	chmod("database/done.task", 0644);
-	chmod("database/toolate.task", 0644);
 	chmod("database/email", 0644);
 	chmod("database/passwd", 0644);
 	$errorLogin = NULL;
