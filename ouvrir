@@ -1,0 +1,2 @@
+chmod -R 755 ../gestionnaire 2> null
+geany index.php crc/tasker.php css/index.css css/tasker.css database/email database/passwd functions/functions.php html/signin.php html/login.php readme.md 2> null &

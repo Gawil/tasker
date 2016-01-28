@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html >
 <?php
-	include( 'functions/functions.php');
-	chmod("database/email", 0644);
-	chmod("database/passwd", 0644);
+	include( 'functions/functionsUser.php');
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
 	$salt = "@68s?qed";

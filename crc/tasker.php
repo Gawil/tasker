@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<?php
-		include( '../functions/functions.php');
+		include( '../functions/functionsUser.php');
+		include( '../functions/functionsTask.php');
 		if(isset($_POST['taskcreated']) && $_POST['taskcreated'] == true) {
 			if (isset($_GET['title']) && isset($_GET['datedeb']) && isset($_GET['datefin']) && isset($_GET['content'])) {
 				$title = $_GET['title'];
