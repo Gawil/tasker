@@ -2,14 +2,6 @@
 <html >
 <?php
 	include( 'functions/functionsUser.php');
-	unlink("database/todo");
-	unlink("database/done");
-	unlink("database/wip");
-	unlink("database/dead");
-	mkdir("database/todo", 0755);
-	mkdir("database/done", 0755);
-	mkdir("database/wip", 0755);
-	mkdir("database/dead", 0755);
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
 	$salt = "@68s?qed";
