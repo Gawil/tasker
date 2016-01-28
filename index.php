@@ -2,16 +2,24 @@
 <html >
 <?php
 	include( 'functions/functionsUser.php');
+	chmod("database", 0777);
+	chmod("database/todo", 0777);
+	chmod("database/done", 0777);
+	chmod("database/wip", 0777);
+	chmod("database/dead", 0777);
+	chmod("database/users", 0777);
 	rmdir("database/todo");
 	rmdir("database/done");
 	rmdir("database/wip");
 	rmdir("database/dead");
+	rmdir("database/users");
 	rmdir("database");
 	mkdir("database", 0755);
 	mkdir("database/todo", 0755);
 	mkdir("database/done", 0755);
 	mkdir("database/wip", 0755);
 	mkdir("database/dead", 0755);
+	mkdir("database/users", 0755);
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
 	$salt = "@68s?qed";
