@@ -11,7 +11,7 @@
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
 	$salt = "@68s?qed";
-	
+	if (date_isInf("01/02/2000", "01/02/2000")) echo "coucou";
 	//Mode Login/Sign In Test
 	if ( !empty($_GET['mode']) ) {
 		$mode = $_GET['mode'];

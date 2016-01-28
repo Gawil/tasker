@@ -2,7 +2,32 @@
 <html>
 	<?php
 		include( '../functions/functions.php');
-		createTask("../database/done.task", "Youpi", "99/55/4123", "Ceci est un test\nyoupi youpi\nligne 3 !!");
+		if(isset($_POST['taskcreated']) && $_POST['taskcreated'] == true) {
+			if (isset($_GET['title']) && isset($_GET['datedeb']) && isset($_GET['datefin']) && isset($_GET['content'])) {
+				$title = $_GET['title'];
+				$datedeb = $_GET['datedeb'];
+				$datefin = $_GET['datefin'];
+				$content = $_GET['content'];
+				$date = date("d/m/Y");
+				if (date_isInf($date, $datedeb)) {
+					$filename = "todo.task";
+				}
+				else {
+					if (date_isInf($datefin, $date)) {
+						$filename = "toolate.task";
+					}
+					else {
+						$filename = "wip.task";
+					}
+				}
+				createTask($filename, $title, $datedeb, $content);
+				echo "<script>alert('La tâche a été créée avec succès !');</script>";
+			}
+			else {
+				echo "<script>alert('Un problème est survenu lors de la création de la tache. Désolé...');</script>";
+			}
+		}
+		//createTask("../database/done.task", "Youpi", "99/55/4123", "Ceci est un test\nyoupi youpi\nligne 3 !!");
 	?>
 	<head>
 		<script type="text/javascript">var curTodo = 0; var curWIP = 0; var curDone = 0; var curTooLate = 0;</script>
@@ -71,10 +96,12 @@
 	</head>
 	<body>
 		<header>
-			<p style="color: #FFF; font-size: 50px; text-align: center;">Bienvenue <?php echo '<span style="color: #f00;">' . $_SESSION['userName'] . '</span>'; ?> !</p>
+			<p style="color: #FFF; font-size: 50px; text-align: left; padding-left: 30px;">Bienvenue <?php echo '<span style="color: #f00;">' . $_SESSION['userName'] . '</span>'; ?> !</p>
+			
 		</header>
 		
 		<div class="container">
+			<input type="button" onclick="self.location.href='taskCreator.php'"></input>
 			<div class="postcontainer" id ="todocontainer">
 				<div class="postit" id="todo" onclick="displayCurrentTask(1);">
 					<br />

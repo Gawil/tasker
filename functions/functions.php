@@ -108,11 +108,33 @@ function readTaskFull($nomfichier, $cur) {
 }
 
 function createTask($filename, $title, $date, $content) {
-	$fichier = fopen($filename, "a+");
+	$fichier = fopen("../database/$filename", "a+");
 	fprintf($fichier, "##\n42\n");
 	fprintf($fichier, "%s\n", $title);
 	fprintf($fichier, "%s\n", $date);
 	fprintf($fichier, "%s\n", $content);
 	fclose($fichier);
+}
+
+function date_isInf($date1, $date2) {
+	$day1 = substr($date1, 0, 2);
+	$month1 = substr($date1, 3, 2);
+	$year1 = substr($date1, 6, 4);
+	$day2 = substr($date2, 0, 2);
+	$month2 = substr($date2, 3, 2);
+	$year2 = substr($date2, 6, 4);
+	
+	if ($year1 == $year2) {
+		if ($month1 == $month2) {
+			$bool = ($day1 < $day2);
+		}
+		else {
+			$bool = ($month1 < $month2);
+		}
+	}
+	else {
+		$bool = ($year1 < $year2);
+	}
+	return $bool;
 }
 ?>
