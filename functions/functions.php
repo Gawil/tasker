@@ -117,6 +117,7 @@ function createTask($folder, $title, $date, $content) {
 	fprintf($fichier, "%s\n", $date);
 	fprintf($fichier, "%s\n", $content);
 	fclose($fichier);
+	echo coucou;
 }
 
 function date_isInf($date1, $date2) {
