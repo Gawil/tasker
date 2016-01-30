@@ -21,7 +21,7 @@ define('TXT_INDEX_ERROR3', "Cette adresse est déjà utilisée");
 define('TXT_INDEX_ERROR4', "Les deux mots de passe doivent correspondre !");
 
 //---------------------------------------------------------
-// page2.php
+// tasker.php
 //---------------------------------------------------------
 /*	 
 define('TXT_ACCUEIL_PAGE1', 'Bienvenue sur la page 1 du site PHP Débutant !');

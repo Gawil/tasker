@@ -21,7 +21,7 @@ define('TXT_INDEX_ERROR3', "This email is already used");
 define('TXT_INDEX_ERROR4', "The two passwords must be the same");
  
 //---------------------------------------------------------
-// page2.php
+// tasker.php
 //---------------------------------------------------------
 /*	 
 define('TXT_ACCUEIL_PAGE1', 'Bienvenue sur la page 1 du site PHP Débutant !');

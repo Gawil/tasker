@@ -26,6 +26,7 @@ function getUserPasswd( $userName )
 		}
 		fclose($file);
 	}
+	// return username and hash
 	return $user;
 }
 
@@ -53,11 +54,12 @@ function checkExistingUser( $userName, $userMail )
 			}
 		}
 	}
+	// return error identificator
 	return $retour;
 }
 
 //---------------------------------------------------------
-// Registrating New User Function
+// Registratering New User Function
 //---------------------------------------------------------
 function registerUser( $userName, $userMail, $userPasswd, $salt ) 
 {

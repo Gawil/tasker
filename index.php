@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html >
-
 <?php
 //---------------------------------------------------------
 // Cookie for the language
@@ -25,49 +24,67 @@ $lang='fr';
 		include('database/lang/en.php'); 
 	}
 
-//---------------------------------------------------------
-// Page Code
-//---------------------------------------------------------	
+/*----------------------------------------------------------------------*/
+/*							Page Main Code								*/
+/*----------------------------------------------------------------------*/
 	include( 'functions/functionsUser.php');
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
 	$salt = "@68s?qed";
-	//Mode Login/Sign In Test
-	if ( !empty($_GET['mode']) ) {
+	
+//---------------------------------------------------------
+// Mode Sign in/Login Test
+//---------------------------------------------------------	
+	if ( !empty($_GET['mode']) ) 
+	{
 		$mode = $_GET['mode'];
 	}
 	else {
 		$mode ='login';
 	}
-	//Login Page Tests
-	if ( $mode === 'login' ) {		
-		if ( isset($_POST['userName']) AND isset($_POST['passwd']) ) {			
+	
+//---------------------------------------------------------
+// Login Page Tests
+//---------------------------------------------------------	
+	if ( $mode === 'login' ) 
+	{		
+		if ( isset($_POST['userName']) AND isset($_POST['passwd']) ) 
+		{			
 			$userInfo=getUserPasswd($_POST['userName']);
-			if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
+			if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) 
+			{
 				$errorLogin = 1;
 			}
 			else {
 				$errorLogin = 2;
 			}
 		}
-	
-	//Sign In Page Tests	
 	}
-	else {	
-		if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	{
-			if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) ) {
+	
+//---------------------------------------------------------
+// Sign in Page Tests
+//---------------------------------------------------------	
+	else 
+	{	
+		if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	
+		{
+			if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) )
+			{
 				$errorSubscription = checkExistingUser( $_POST['newUserName'], $_POST['newUserMail'] );
-				if ($errorSubscription === 0) {
+				if ($errorSubscription === 0) 
+				{
 					registerUser( $_POST['newUserName'], $_POST['newUserMail'], $_POST['newUserPasswd'], $salt );
 					$_SESSION['userName'] = $_POST['newUserName'];
 					header('Location: crc/tasker.php');
 				}
-			}
-			else {
+			} else {
 				$errorSubscription = 4;
 			}
 		}
-	}		
+	}
+//---------------------------------------------------------
+// End
+//---------------------------------------------------------			
 ?>
 	
 	<head>
