@@ -5,6 +5,10 @@
 	$file_id = fopen("database/config", "w");
 		fprintf($file_id, "1\n");
 	fclose($file_id);
+	unlink("database/users/root/tasks/wip");
+	unlink("database/wip/3");
+	unlink("database/wip/4");
+	unlink("database/wip/5");
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
 	$salt = "@68s?qed";
