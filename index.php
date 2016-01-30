@@ -2,6 +2,19 @@
 <html >
 <?php
 //---------------------------------------------------------
+// Cookie for the last username used
+//---------------------------------------------------------
+	if(isset($_COOKIE['lastUserName']))
+	{
+		$lastUserName = $_COOKIE['lastUserName'];
+	} else {
+		$lastUserName = "";
+	}
+	
+// cookie's expiration time (1 year)
+	$expire = 365*24*3600; 
+
+//---------------------------------------------------------
 // Cookie for the language
 //---------------------------------------------------------
 	if(isset($_COOKIE['lang']))
@@ -10,13 +23,11 @@
 	} else { // If no language is declared, attempts to recognize the default language of the browser 
 		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2); 
 	}
-// cookie's expiration time (1 year)
-	$expire = 365*24*3600; 
+	setcookie('lang', $lang, time() + $expire);  
 
 //---------------------------------------------------------
 // Include of the right language file
 //---------------------------------------------------------	
-$lang='fr';
 	if ($lang=='fr')
 	{           
 		include('database/lang/fr.php'); 

@@ -1,10 +1,11 @@
 <fieldset>
 	<form action="" method="post">				
-		<input class="login" type="text" name="userName" placeholder="<?php echo TXT_INDEX_USERNAME; ?>" required>
+		<input class="login" type="text" name="userName" value="<?php echo $lastUserName ?>" placeholder="<?php echo TXT_INDEX_USERNAME; ?>" required>
 		<input class="login" type="password" name="passwd" placeholder="<?php echo TXT_INDEX_PASSWORD; ?>" required>
 		<?php
 			if ($errorLogin === 1) {
 				$_SESSION['userName'] = $_POST['userName'];
+				setcookie('lastUserName', $_POST['userName'], time() + $expire);  
 				header('Location: crc/tasker.php');
 			} 
 			elseif ($errorLogin === 2) {
