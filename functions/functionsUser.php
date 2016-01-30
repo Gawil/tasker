@@ -63,10 +63,10 @@ function checkExistingUser( $userName, $userMail )
 //---------------------------------------------------------
 function registerUser( $userName, $userMail, $userPasswd, $salt ) 
 {
-	mkdir("database/users/$userName", 0755);
-	mkdir("database/users/$userName/tasks", 0755);
 	$fileMail = fopen("database/email", "a+");
 	if ($fileMail) {
+		mkdir("database/users/$userName", 0755);
+		mkdir("database/users/$userName/tasks", 0755);
 		$fileName = fopen("database/users/$userName/$userName.usr", "a+");
 		if ($fileName) {
 			$filePasswd=fopen("database/passwd", "a+");
@@ -91,9 +91,5 @@ function registerUser( $userName, $userMail, $userPasswd, $salt )
 			rmdir("database/users/$userName/tasks");
 		}
 		fclose($filePasswd);
-	}
-	else {
-		rmdir("database/users/$userName");
-		rmdir("database/users/$userName/tasks");
 	}
 }
