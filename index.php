@@ -2,7 +2,9 @@
 <html >
 <?php
 	include( 'functions/functionsUser.php');
-	unlink("database/config");
+	$file_id = fopen("database/config", "w");
+		fprintf($file_id, "1\n");
+	fclose($file_id);
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
 	$salt = "@68s?qed";
