@@ -28,7 +28,6 @@ $lang='fr';
 //---------------------------------------------------------
 // Page Code
 //---------------------------------------------------------	
-
 	include( 'functions/functionsUser.php');
 	$errorLogin = NULL;
 	$errorSubscription = NULL;

@@ -2,15 +2,22 @@
 /*----------------------------------------------------------------------*/
 /*						Register and Login Functions					*/
 /*----------------------------------------------------------------------*/
-function getUserPasswd( $userName ) {
+
+//---------------------------------------------------------
+// Getting User's Password Function
+//---------------------------------------------------------
+function getUserPasswd( $userName )
+{
 	$file=fopen("database/passwd", "r");
 	$user=null;
 	if ( $file !== false ) {
-		while (!feof($file) && $user === null) {
+		while (!feof($file) && $user === null)
+		{
 			$line=fgets($file);
 			$line=substr($line,0,strlen($line)-1);
 			$info=explode( ':', $line);
-			if( count($info) === 2 && $info[0] === $userName ) {
+			if( count($info) === 2 && $info[0] === $userName )
+			{
 				$user=array(
 					'name' => $userName,
 					'hash' => $info[1]
@@ -21,6 +28,10 @@ function getUserPasswd( $userName ) {
 	}
 	return $user;
 }
+
+//---------------------------------------------------------
+// Checking User Existence Function
+//---------------------------------------------------------
 function checkExistingUser( $userName, $userMail ) 
 {
 	$retour = 0;	// everything is alright
@@ -44,29 +55,34 @@ function checkExistingUser( $userName, $userMail )
 	}
 	return $retour;
 }
-function registerUser( $userName, $userMail, $userPasswd, $salt ) {
-/* registering e-mail adress in database */
-	$file = fopen("database/email", "a+");
-	if ( $file != null )
+
+//---------------------------------------------------------
+// Registrating New User Function
+//---------------------------------------------------------
+function registerUser( $userName, $userMail, $userPasswd, $salt ) 
+{
+	$fileMail = fopen("database/email", "a+");
+	if ( $fileMail != null)
 	{
-		fprintf( $file, "$userMail\n");
-		fclose($file);
-	}	
-/* creating user file in database */
-	mkdir("database/users/$userName", 0755);
-	mkdir("database/users/$userName/tasks", 0755);
-	$file = fopen("database/users/$userName/$userName.usr", "a+");
-	if ( $file != null )
-	{
-		fprintf( $file, "$userName:$userMail\n");
-		fclose($file);
-	}	
-/* registering user's password in database */	
-	$file=fopen("database/passwd", "a+");
-	if ( $file != null )
-	{
-		$PasswdCrypt = sha1(sha1("$userPasswd"). $salt);
-		fprintf( $file, "$userName:$PasswdCrypt\n");
-		fclose($file);
-	}	
+		$fileName = fopen("database/users/$userName/$userName.usr", "a+");
+		if ( $fileName != null)
+		{
+			$filePasswd=fopen("database/passwd", "a+");
+			if (  $filePasswd != null )
+			{
+				/* creating user file in database */
+				mkdir("database/users/$userName", 0755);
+				mkdir("database/users/$userName/tasks", 0755);
+				/* registering e-mail adress in database */
+				fprintf( $fileMail, "$userMail\n");
+				fprintf( $fileName, "$userName:$userMail\n");
+				/* registering user's password in database */
+				$PasswdCrypt = sha1(sha1("$userPasswd"). $salt);
+				fprintf( $filePasswd, "$userName:$PasswdCrypt\n");
+				fclose($fileName);
+			}
+			fclose($fileMail);
+		}
+		fclose($filePasswd);
+	}
 }
