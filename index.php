@@ -40,7 +40,7 @@
 /*----------------------------------------------------------------------*/
 	include( 'functions/functionsUser.php');
 	$errorLogin = NULL;
-	$errorSubscription = NULL;
+	$errorSubscription = 0;
 	$salt = "@68s?qed";
 	
 //---------------------------------------------------------
@@ -60,13 +60,18 @@
 	if ( $mode === 'login' ) 
 	{		
 		if ( isset($_POST['userName']) AND isset($_POST['passwd']) ) 
-		{			
-			$userInfo=getUserPasswd($_POST['userName']);
-			if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) 
-			{
-				$errorLogin = 1;
-			}
-			else {
+		{	
+			if ( strlen($_POST['userName'])>=3 AND strlen($_POST['userName'])<=20 AND strlen($_POST['passwd'])>=8 AND strlen($_POST['passwd'])<=20 ) 
+			{		
+				$userInfo=getUserPasswd($_POST['userName']);
+				if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) 
+				{
+					$errorLogin = 1;
+				}
+				else {
+					$errorLogin = 2;
+				}
+			} else {
 				$errorLogin = 2;
 			}
 		}
@@ -77,19 +82,32 @@
 //---------------------------------------------------------	
 	else 
 	{	
-		if (isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']))	
+		if ( isset($_POST['newUserMail']) AND isset($_POST['newUserName']) AND isset($_POST['newUserPasswd']) )	
 		{
-			if (!empty($_POST['newUserMail']) AND !empty($_POST['newUserName']) AND !empty($_POST['newUserPasswd']) AND !empty($_POST['newUserPasswdBis']) AND ($_POST['newUserPasswd']==$_POST['newUserPasswdBis']) )
+			if ( strlen($_POST['newUserMail'])<5 OR strlen($_POST['newUserMail'])>50 )
 			{
+				$errorSubscription = $errorSubscription+10;
+			}
+			if ( strlen($_POST['newUserName'])<3 OR strlen($_POST['newUserName'])>20 )
+			{
+				$errorSubscription = $errorSubscription+20;
+			}
+			if ( strlen($_POST['newUserPasswd'])<8 OR strlen($_POST['newUserPasswd'])>20 OR strlen($_POST['newUserPasswdBis'])<8 OR strlen($_POST['newUserPasswdBis'])>20 )	
+			{
+				$errorSubscription = $errorSubscription+40;
+			}
+			if ( $errorSubscription === 0 )
+			{			
 				$errorSubscription = checkExistingUser( $_POST['newUserName'], $_POST['newUserMail'] );
 				if ($errorSubscription === 0) 
 				{
 					registerUser( $_POST['newUserName'], $_POST['newUserMail'], $_POST['newUserPasswd'], $salt );
 					$_SESSION['userName'] = $_POST['newUserName'];
+					setcookie('lastUserName', $_POST['newUserName'], time() + $expire);
 					header('Location: crc/tasker.php');
+				} else {
+					$errorSubscription = 4;
 				}
-			} else {
-				$errorSubscription = 4;
 			}
 		}
 	}

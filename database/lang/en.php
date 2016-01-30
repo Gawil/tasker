@@ -19,6 +19,10 @@ define('TXT_INDEX_ERROR1', "Wrong combinaison username/password");
 define('TXT_INDEX_ERROR2', "This username is already used");
 define('TXT_INDEX_ERROR3', "This email is already used");
 define('TXT_INDEX_ERROR4', "The two passwords must be the same");
+
+define('TXT_INDEX_ERROR5', "Your email address must be between 5 and 50 characters");
+define('TXT_INDEX_ERROR6', "Your username must be between 3 and 20 characters");
+define('TXT_INDEX_ERROR7', "Your password must be between 8 and 20 characters");
  
 //---------------------------------------------------------
 // tasker.php

@@ -20,6 +20,11 @@ define('TXT_INDEX_ERROR2', "Ce nom est déjà utilisé");
 define('TXT_INDEX_ERROR3', "Cette adresse est déjà utilisée");
 define('TXT_INDEX_ERROR4', "Les deux mots de passe doivent correspondre !");
 
+
+define('TXT_INDEX_ERROR5', "Votre nom d'utilisateur doit faire entre 3 et 20 caractères");
+define('TXT_INDEX_ERROR6', "Votre adresse mail doit faire entre 5 et 50 caractères");
+define('TXT_INDEX_ERROR7', "Votre mot de passe doit faire entre 8 et 20 caractères");
+
 //---------------------------------------------------------
 // tasker.php
 //---------------------------------------------------------
