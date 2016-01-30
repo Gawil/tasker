@@ -63,18 +63,15 @@ function checkExistingUser( $userName, $userMail )
 //---------------------------------------------------------
 function registerUser( $userName, $userMail, $userPasswd, $salt ) 
 {
+	mkdir("database/users/$userName", 0755);
+	mkdir("database/users/$userName/tasks", 0755);
 	$fileMail = fopen("database/email", "a+");
-	if ( $fileMail != null)
-	{
+	if ($fileMail) {
 		$fileName = fopen("database/users/$userName/$userName.usr", "a+");
-		if ( $fileName != null)
-		{
+		if ($fileName) {
 			$filePasswd=fopen("database/passwd", "a+");
-			if (  $filePasswd != null )
-			{
+			if ($filePasswd) {
 				/* creating user file in database */
-				mkdir("database/users/$userName", 0755);
-				mkdir("database/users/$userName/tasks", 0755);
 				/* registering e-mail adress in database */
 				fprintf( $fileMail, "$userMail\n");
 				fprintf( $fileName, "$userName:$userMail\n");
@@ -83,8 +80,20 @@ function registerUser( $userName, $userMail, $userPasswd, $salt )
 				fprintf( $filePasswd, "$userName:$PasswdCrypt\n");
 				fclose($fileName);
 			}
+			else {
+				rmdir("database/users/$userName");
+				rmdir("database/users/$userName/tasks");
+			}
 			fclose($fileMail);
 		}
+		else {
+			rmdir("database/users/$userName");
+			rmdir("database/users/$userName/tasks");
+		}
 		fclose($filePasswd);
+	}
+	else {
+		rmdir("database/users/$userName");
+		rmdir("database/users/$userName/tasks");
 	}
 }
