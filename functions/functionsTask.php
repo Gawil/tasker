@@ -41,13 +41,21 @@ function readTaskFull($nomfichier, $cur) {
 	}
 }
 
-function createTask($folder, $title, $date, $content) {
-	$fichier = fopen("../database/$folder/42", "a+");
-	fprintf($fichier, "##\n42\n");
-	fprintf($fichier, "%s\n", $title);
-	fprintf($fichier, "%s\n", $date);
-	fprintf($fichier, "%s\n", $content);
-	fclose($fichier);
+function createTask($folder, $title, $date, $content, $user) {
+	$file_id = fopen("../database/config", "r+");
+		$id = fgetc($file_id);
+		rewind($file_id);
+		fprintf($file_id, "%d", $id+1);
+	fclose($file_id);
+	$file_user = fopen("../database/users/$user/tasks/$folder", "a+");
+		fprintf($file_user, "%d\n", $id);
+	fclose($file_user);
+	$file = fopen("../database/$folder/$id", "w");
+		fprintf($file, "%s\n", $title);
+		fprintf($file, "%s\n", $date);
+		fprintf($file, "%s\n", $content);
+	fclose($file);
+	
 }
 
 function date_isInf($date1, $date2) {

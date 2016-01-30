@@ -3,7 +3,7 @@
 	<?php
 		include( '../functions/functionsUser.php');
 		include( '../functions/functionsTask.php');
-		if(isset($_POST['taskcreated']) && $_POST['taskcreated'] == true) {
+		//if(isset($_POST['taskcreated']) && $_POST['taskcreated'] == true) {
 			if (isset($_GET['title']) && isset($_GET['datedeb']) && isset($_GET['datefin']) && isset($_GET['content'])) {
 				$title = $_GET['title'];
 				$datedeb = $_GET['datedeb'];
@@ -21,14 +21,13 @@
 						$folder = "wip";
 					}
 				}
-				createTask($folder, $title, $datedeb, $content);
+				createTask($folder, $title, $datedeb, $content, $_SESSION['userName']);
 				echo "<script>alert('La tâche a été créée avec succès !');</script>";
 			}
 			else {
 				echo "<script>alert('Un problème est survenu lors de la création de la tache. Désolé...');</script>";
 			}
-		}
-		//createTask("../database/done.task", "Youpi", "99/55/4123", "Ceci est un test\nyoupi youpi\nligne 3 !!");
+		//}
 	?>
 	<head>
 		<script type="text/javascript">var curTodo = 0; var curWIP = 0; var curDone = 0; var curDead = 0;</script>
@@ -39,7 +38,7 @@
 				$(document).ready(
 					function() {
 						curTodoAvant = curTodo;
-						$("#todo").load("taskdisplayer.php?cursor="+curTodo+"&file=todo.task");
+						$("#todo").load("taskdisplayer.php?cursor="+curTodo+"&fold=todo");
 						$.ajaxSetup({ cache: false });
 					}
 				);
@@ -48,7 +47,7 @@
 				$(document).ready(
 					function() {
 						curWIPAvant = curWIP;
-						$("#wip").load("taskdisplayer.php?cursor="+curWIP+"&file=wip.task");
+						$("#wip").load("taskdisplayer.php?cursor="+curWIP+"&fold=wip");
 						$.ajaxSetup({ cache: false });
 					}
 				);
@@ -57,7 +56,7 @@
 				$(document).ready(
 					function() {
 						curDoneAvant = curDone;
-						$("#done").load("taskdisplayer.php?cursor="+curDone+"&file=done.task");
+						$("#done").load("taskdisplayer.php?cursor="+curDone+"&fold=done");
 						$.ajaxSetup({ cache: false });
 					}
 				);
@@ -66,7 +65,7 @@
 				$(document).ready(
 					function() {
 						curDeadAvant = curDead;
-						$("#dead").load("taskdisplayer.php?cursor="+curDead+"&file=dead.task");
+						$("#dead").load("taskdisplayer.php?cursor="+curDead+"&fold=dead");
 						$.ajaxSetup({ cache: false });
 					}
 				);
