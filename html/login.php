@@ -1,25 +1,19 @@
 <fieldset>
 	<form action="" method="post">				
-		<input class="login" type="text" name="userName" placeholder="Username" required>
-		<input class="login" type="password" name="passwd" placeholder="Password" required>
+		<input class="login" type="text" name="userName" placeholder="<?php echo TXT_INDEX_USERNAME; ?>" required>
+		<input class="login" type="password" name="passwd" placeholder="<?php echo TXT_INDEX_PASSWORD; ?>" required>
 		<?php
 			if ($errorLogin === 1) {
 				$_SESSION['userName'] = $_POST['userName'];
 				header('Location: crc/tasker.php');
 			} 
 			elseif ($errorLogin === 2) {
-				echo '<p style="color: #900; font-size: 13px;">Combinaison nom d\'utilisateur/mot de passe incorrecte</p>';
-			}
-			if ($errorLogin === 3) {
-				echo '<p style="color: #900; font-size: 13px;">Veuillez entrer un nom d\'utilisateur</p>';
-			} 
-			elseif ( $errorLogin === 4 ) {
-				echo '<p style="color: #900; font-size: 13px;">Veuillez entrer un mot de passe</p>';
+				echo "<p style=\"color: #900; font-size: 13px;\">".TXT_INDEX_ERROR1."</p>";
 			}
 		?>
-		<input class="login" type="submit" value="Login">			
+		<input class="login" type="submit" value="<?php echo TXT_INDEX_LOGIN2; ?>">			
 		<footer>
-			<p><span class="info">?</span><a id="forgotten" href="#">Forgot Password</a></p>
+			<p><span class="info">?</span><a id="forgotten" href="#"><?php echo TXT_INDEX_FORGOTPASSWD; ?></a></p>
 		</footer>				
 	</form>
 </fieldset>

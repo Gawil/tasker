@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html >
+
 <?php
+//---------------------------------------------------------
+// Cookie for the language
+//---------------------------------------------------------
+	if(isset($_COOKIE['lang']))
+	{
+		$lang = $_COOKIE['lang'];
+	} else { // If no language is declared, attempts to recognize the default language of the browser 
+		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2); 
+	}
+// cookie's expiration time (1 year)
+	$expire = 365*24*3600; 
+
+//---------------------------------------------------------
+// Include of the right language file
+//---------------------------------------------------------	
+$lang='fr';
+	if ($lang=='fr')
+	{           
+		include('database/lang/fr.php'); 
+	} else { // english is the default language
+		include('database/lang/en.php'); 
+	}
+
+//---------------------------------------------------------
+// Page Code
+//---------------------------------------------------------	
+
 	include( 'functions/functionsUser.php');
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
@@ -15,21 +43,12 @@
 	//Login Page Tests
 	if ( $mode === 'login' ) {		
 		if ( isset($_POST['userName']) AND isset($_POST['passwd']) ) {			
-			if ( !empty($_POST['userName']) AND !empty($_POST['passwd']) ) {				
-				$userInfo=getUserPasswd($_POST['userName']);
-				if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
-					$errorLogin = 1;
-				}
-				else {
-					$errorLogin = 2;
-				}
+			$userInfo=getUserPasswd($_POST['userName']);
+			if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) {
+				$errorLogin = 1;
 			}
 			else {
-				if ( empty($_POST['userName']) ) {
-					$errorLogin = 3;
-				} else {
-					$errorLogin = 4;
-				}
+				$errorLogin = 2;
 			}
 		}
 	
@@ -54,14 +73,14 @@
 	
 	<head>
 		<meta charset="UTF-8">
-		<title>Login</title>
+		<title><?php echo TXT_INDEX_LOGIN2; ?></title>
 		<link rel="stylesheet" href="css/index.css">
 	</head>
 	<body>
 		<div class="container">
 			<div id="login-form">
-				<h3 id = "signin" <?php if($mode=='signin'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=signin">Sign in</a></h3>
-				<h3 id = "login" <?php if($mode=='login'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=login">Login</a></h3>
+				<h3 id = "signin" <?php if($mode=='signin'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=signin"><?php echo TXT_INDEX_SIGNIN1; ?></a></h3>
+				<h3 id = "login" <?php if($mode=='login'){echo "style=\"background-color:#000\"";} ?> ><a class="choice" href="index.php?mode=login"><?php echo TXT_INDEX_LOGIN1; ?></a></h3>
 				<?php
 					if ( $mode === 'login' ) {
 						include('html/login.php');
