@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="../functions/functions.js"></script>
 	<?php
 		include( '../functions/functionsUser.php');
 		include( '../functions/functionsTask.php');
@@ -30,61 +32,6 @@
 		//}
 	?>
 	<head>
-		<script type="text/javascript">curtodo = 0; curwip = 0; curdone = 0; curdead = 0;</script>
-		<script type="text/javascript">id = 0;</script>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-		<script>
-			function displayNextTodo() {
-				$(document).ready(
-					function() {
-						$("#todo").load("taskdisplayer.php?cursor="+curtodo+"&fold=todo");
-						$.ajaxSetup({ cache: false });
-					}
-				);
-			}
-			function displayNextWIP() {
-				$(document).ready(
-					function() {
-						$("#wip").load("taskdisplayer.php?cursor="+curwip+"&fold=wip");
-						$.ajaxSetup({ cache: false });
-					}
-				);
-			}
-			function displayNextDone() {
-				$(document).ready(
-					function() {
-						$("#done").load("taskdisplayer.php?cursor="+curdone+"&fold=done");
-						$.ajaxSetup({ cache: false });
-					}
-				);
-			}
-			function displayNextDead() {
-				$(document).ready(
-					function() {
-						$("#dead").load("taskdisplayer.php?cursor="+curdead+"&fold=dead");
-						$.ajaxSetup({ cache: false });
-					}
-				);
-			}
-			function displayCurrentTask(i) {
-				switch(i) {
-					case 1:
-						document.location.href = "task.php?fold=todo&id="+id;
-						break;
-					case 2:
-						document.location.href = "task.php?fold=wip&id="+id;
-						break;
-					case 3:
-						document.location.href = "task.php?fold=done&id="+id;
-						break;
-					case 4:
-						document.location.href = "task.php?fold=dead&id="+id;
-						break;
-					default:
-				} 
-			}
-		</script>
-		
 		<meta charset="UTF-8">
 		<title>Tasker</title>
 		<link rel="stylesheet" href="../css/tasker.css">
