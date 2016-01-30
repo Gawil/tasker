@@ -30,15 +30,14 @@
 		//}
 	?>
 	<head>
-		<script type="text/javascript">var curTodo = 0; var curWIP = 0; var curDone = 0; var curDead = 0;</script>
-		<script type="text/javascript">var curTodoAvant = 0; var curWIPAvant = 0; var curDoneAvant = 0; var curDeadAvant = 0;</script>
+		<script type="text/javascript">curtodo = 0; curwip = 0; curdone = 0; curdead = 0;</script>
+		<script type="text/javascript">id = 0;</script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script>
 			function displayNextTodo() {
 				$(document).ready(
 					function() {
-						curTodoAvant = curTodo;
-						$("#todo").load("taskdisplayer.php?cursor="+curTodo+"&fold=todo");
+						$("#todo").load("taskdisplayer.php?cursor="+curtodo+"&fold=todo");
 						$.ajaxSetup({ cache: false });
 					}
 				);
@@ -46,8 +45,7 @@
 			function displayNextWIP() {
 				$(document).ready(
 					function() {
-						curWIPAvant = curWIP;
-						$("#wip").load("taskdisplayer.php?cursor="+curWIP+"&fold=wip");
+						$("#wip").load("taskdisplayer.php?cursor="+curwip+"&fold=wip");
 						$.ajaxSetup({ cache: false });
 					}
 				);
@@ -55,8 +53,7 @@
 			function displayNextDone() {
 				$(document).ready(
 					function() {
-						curDoneAvant = curDone;
-						$("#done").load("taskdisplayer.php?cursor="+curDone+"&fold=done");
+						$("#done").load("taskdisplayer.php?cursor="+curdone+"&fold=done");
 						$.ajaxSetup({ cache: false });
 					}
 				);
@@ -64,8 +61,7 @@
 			function displayNextDead() {
 				$(document).ready(
 					function() {
-						curDeadAvant = curDead;
-						$("#dead").load("taskdisplayer.php?cursor="+curDead+"&fold=dead");
+						$("#dead").load("taskdisplayer.php?cursor="+curdead+"&fold=dead");
 						$.ajaxSetup({ cache: false });
 					}
 				);
@@ -73,16 +69,16 @@
 			function displayCurrentTask(i) {
 				switch(i) {
 					case 1:
-						document.location.href = "task.php?nomfichier=todo.task&cur="+curTodoAvant;
+						document.location.href = "task.php?fold=todo&id="+id;
 						break;
 					case 2:
-						document.location.href = "task.php?nomfichier=wip.task&cur="+curWIPAvant;
+						document.location.href = "task.php?fold=wip&id="+id;
 						break;
 					case 3:
-						document.location.href = "task.php?nomfichier=done.task&cur="+curDoneAvant;
+						document.location.href = "task.php?fold=done&id="+id;
 						break;
 					case 4:
-						document.location.href = "task.php?nomfichier=dead.task&cur="+curDeadAvant;
+						document.location.href = "task.php?fold=dead&id="+id;
 						break;
 					default:
 				} 

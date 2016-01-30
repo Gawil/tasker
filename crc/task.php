@@ -3,11 +3,11 @@
 <?php 
 	include( '../functions/functionsTask.php');
 	
-	if (isset($_GET['nomfichier'])) {
-		$nomfichier = $_GET['nomfichier'];
+	if (isset($_GET['fold'])) {
+		$folder = $_GET['fold'];
 	}
-	if (isset($_GET['cur'])) {
-		$cursor = $_GET['cur'];
+	if (isset($_GET['id'])) {
+		$id = $_GET['id'];
 	}
 ?>
 	<head>
@@ -28,7 +28,7 @@
 			<input type="button" value="UN TEST"></input>
 		</div>
 		<div id="sheet">
-			<?php readTaskFull("../database/$nomfichier", $cursor); ?>
+			<?php readTaskFull("../database/$folder", $id); ?>
 		</div>
 	</body>
 	

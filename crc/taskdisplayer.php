@@ -11,10 +11,13 @@
 		else {
 			$cursor = SEEK_SET;
 		}
-		echo "$cursor";
 		fseek($fichier, $cursor);
 		fscanf($fichier, "%d", $task_id);
-		echo "$task_id";
+		if (!is_int($task_id)) {
+			rewind($fichier);
+			fscanf($fichier, "%d", $task_id);
+		}
+		$cursor = ftell($fichier);
 		fclose($fichier);
 		$fichier = fopen("../database/$folder/$task_id", "r");
 		readTask($fichier);
@@ -28,17 +31,19 @@
 <?php
 	switch ($folder) {
 		case "todo":
-			echo "<script>curTodo = $cursor;</script>";
+			echo "<script>curtodo = $cursor;</script>";
 			break;
 		case "wip":
-			echo "<script>curWIP = $cursor</script>";
+			echo "<script>curwip = $cursor</script>";
 			break;
 		case "done":
-			echo "<script>curDone = $cursor</script>";
+			echo "<script>curdone = $cursor</script>";
 			break;
 		case "dead":
-			echo "<script>curTooLate = $cursor</script>";
+			echo "<script>curdead = $cursor</script>";
 			break;
 		default:
 	}
 ?>
+
+<script>id = <?php echo $task_id; ?></script>

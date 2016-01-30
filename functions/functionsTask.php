@@ -3,34 +3,30 @@
 /*								Task Functions							*/
 /*----------------------------------------------------------------------*/
 function readTask($fichier) {
-	fscanf($fichier, "%d", $id);
-	echo "<h2 style=\"font-size: 35px; margin-bottom: 0px;\">Tache n°$id</h2>";
 	$title = fgets($fichier);
-	echo "<h2 style=\"font-size: 30px; margin-bottom: 0px;\">$title</h2>";
+	echo "<h2 style=\"font-size: 35px; margin-bottom: 0px;\">$title</h2>";
 	$date = fgets($fichier);
 	echo "<h3 style=\"font-size: 20px; text-align: right; margin-top: 0px;\">$date</h3>";
 	$ligne = fgets($fichier);
 	echo "<p>";
-	while(!(feof($fichier)) && (substr($ligne, 0, 2) != "##")) {
+	while(!(feof($fichier))) {
 		echo "$ligne";
 		echo "<br />";
 		$ligne = fgets($fichier);
 	}
 	echo "</p>";
 }
-function readTaskFull($nomfichier, $cur) {
-	$fichier = fopen($nomfichier, "r");
-	fseek($fichier, $cur);
+
+function readTaskFull($folder, $id) {
+	$fichier = fopen("$folder/$id", "r");
 	if ($fichier) {
-		fscanf($fichier, "%d", $id);
-		echo "<h2 style=\"font-size: 35px; margin-bottom: 0px;\">Tache n°$id</h2>";
 		$title = fgets($fichier);
-		echo "<h2 style=\"font-size: 30px; margin-bottom: 0px;\">$title</h2>";
+		echo "<h2 style=\"font-size: 35px; margin-bottom: 0px;\">$title</h2>";
 		$date = fgets($fichier);
 		echo "<h3 style=\"font-size: 20px; text-align: right; margin-top: 0px;\">$date</h3>";
 		$ligne = fgets($fichier);
 		echo "<p>";
-		while(!(feof($fichier)) && (substr($ligne, 0, 2) != "##")) {
+		while(!(feof($fichier))) {
 			echo "$ligne";
 			echo "<br />";
 			$ligne = fgets($fichier);
