@@ -5,12 +5,12 @@
 	<?php
 		include( '../functions/functionsUser.php');
 		include( '../functions/functionsTask.php');
-		//if(isset($_POST['taskcreated']) && $_POST['taskcreated'] == true) {
-			if (isset($_GET['title']) && isset($_GET['datedeb']) && isset($_GET['datefin']) && isset($_GET['content'])) {
-				$title = $_GET['title'];
-				$datedeb = $_GET['datedeb'];
-				$datefin = $_GET['datefin'];
-				$content = $_GET['content'];
+		if(isset($_POST['taskCreated']) && $_POST['taskCreated'] == true) {
+			if (isset($_POST['title']) && isset($_POST['datedeb']) && isset($_POST['datefin']) && isset($_POST['content'])) {
+				$title = $_POST['title'];
+				$datedeb = $_POST['datedeb'];
+				$datefin = $_POST['datefin'];
+				$content = $_POST['content'];
 				$date = date("d/m/Y");
 				if (date_isInf($date, $datedeb)) {
 					$folder = "todo";
@@ -29,7 +29,7 @@
 			else {
 				echo "<script>alert('Un problème est survenu lors de la création de la tache. Désolé...');</script>";
 			}
-		//}
+		}
 	?>
 	<head>
 		<meta charset="UTF-8">
@@ -40,7 +40,10 @@
 	<body>
 		<header>
 			<p style="color: #FFF; font-size: 50px; text-align: left; padding-left: 30px; max-width: 600px; float: left;">Bienvenue <?php echo '<span style="color: #f00;">' . $_SESSION['userName'] . '</span>'; ?> !</p>
-			<input class="creator" type="button" onclick="self.location.href='taskCreator.php'"></input>
+			<div id="menu">	
+				<input class="creator" type="button" value="Créer une tâche" onclick="self.location.href='taskCreator.php'"></input>
+				<input class="deco" type="button" value="Déconnexion" onclick="self.location.href='../index.php'"></input>
+			</div>
 		</header>
 		
 		<div class="container">

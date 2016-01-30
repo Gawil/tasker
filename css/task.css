@@ -19,26 +19,30 @@ header
 	height: 100px;
 }
 
-header:hover
-{
-	background-color: rgba(66, 66, 66, 0.7);
-}
-
 #menu
 {
-	display: block;
+	background-color: none;
 	position: relative;
-	float: left;
-	top: 100px;
-	width: 200px;
+	float: right;
+	height: 100%;
+	width: 40%;
 }
 
-input[type="button"]
+.deco
 {
-	border: none;
-	border-radius: 0px;
-	margin: 0px;
-	width: 100%;
+	background-color: rgba(99, 99, 99, 0.7);
+	font-family: arial;
+	font-size: 1.5em;
+	color: #fff;
+	width: auto;
+	max-width: 200px;
+	height: 100%;
+}
+
+.deco:hover
+{
+	background-color: rgba(66, 66, 66, 0.7);
+	cursor: pointer;
 }
 
 #sheet

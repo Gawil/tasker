@@ -11,7 +11,8 @@
 	</header>
 	
 	<body>
-		<form id="sheet" action="tasker.php" method="get">
+		<form id="sheet" action="tasker.php" method="post">
+			<input name="taskCreated" value="true" style="display: none;"/>
 			<input name="title" type="text" placeholder="Title" style="font-size: 35px;"/><br/><br/>
 			<input name="datedeb" type="date" placeholder="jj/mm/aaaa" value="<?php echo date("d/m/Y"); ?>"/>
 			<div id="date">Date début :</div><br/><br/>
