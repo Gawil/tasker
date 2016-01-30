@@ -2,6 +2,7 @@
 <html >
 <?php
 	include( 'functions/functionsUser.php');
+	unlink("database/config");
 	$errorLogin = NULL;
 	$errorSubscription = NULL;
 	$salt = "@68s?qed";

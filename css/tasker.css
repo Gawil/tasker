@@ -80,7 +80,7 @@ header:hover
 	height: 300px;
 	background-color: #ffc;
 	border-bottom-right-radius: 50px 10px;
-	overflow: hidden;
+	
 	
 	/* Défaut */
 	box-shadow: 15px 15px 20px rgba(10, 10, 10, 1);

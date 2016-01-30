@@ -17,7 +17,6 @@ function readTask($fichier) {
 		$ligne = fgets($fichier);
 	}
 	echo "</p>";
-	return ftell($fichier);
 }
 function readTaskFull($nomfichier, $cur) {
 	$fichier = fopen($nomfichier, "r");
