@@ -67,10 +67,10 @@
 	</head>
 	<body>
 		<header>
-			<p style="color: #FFF; font-size: 50px; text-align: left; padding-left: 30px; max-width: 600px; float: left;"><?php echo TXT_TASKER_WELCOME; echo '<span style="color: #f00;">' . $_SESSION['userName'] . '</span>'; ?> !</p>
+			<p style="color: #FFF; font-size: 50px; text-align: left; padding-left: 30px; max-width: 600px; float: left;"><?php echo TXT_BANNER_WELCOME; echo '<span style="color: #f00;">' . $_SESSION['userName'] . '</span>'; ?> !</p>
 			<div id="menu">	
-				<input class="creator" type="button" value="<?php echo TXT_TASKER_CREATETASK; ?>" onclick="self.location.href='taskCreator.php'"></input>
-				<input class="deco" type="button" value="<?php echo TXT_TASKER_DISCONNECTION; ?>" onclick="self.location.href='../index.php'"></input>
+				<input class="creator" type="button" value="<?php echo TXT_BANNER_CREATETASK; ?>" onclick="self.location.href='taskCreator.php'"></input>
+				<input class="deco" type="button" value="<?php echo TXT_BANNER_DISCONNECTION; ?>" onclick="self.location.href='../index.php'"></input>
 			</div>
 		</header>
 		

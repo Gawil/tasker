@@ -29,19 +29,32 @@ define('TXT_INDEX_ERROR7', "Votre mot de passe doit faire entre 8 et 20 caractè
 //---------------------------------------------------------
 // tasker.php
 //---------------------------------------------------------
-define('TXT_TASKER_WELCOME', "Bienvenue ");
 define('TXT_TASKER_TODO', "Tâches à venir");
 define('TXT_TASKER_WIP', "Tâches en cours");
 define('TXT_TASKER_DONE', "Tâches terminées");
 define('TXT_TASKER_DEAD', "Tâches décédées");
 define('TXT_TASKER_NEXT', "SUIVANT");
 define('TXT_TASKER_NEXTMESSAGE', "Veuillez cliquer sur <span style=\"color: #f00;\">Suivant</span> pour afficher la prochaine tâche");
-define('TXT_TASKER_DISCONNECTION', "Déconnexion");
-define('TXT_TASKER_CREATETASK', "Créer une tâche");
 define('TXT_TASKER_CLEAN', "Nettoyer la base de donnée");
 
 define('TXT_TASKER_NEWTASKFAIL', "Un problème est survenu lors de la création de la tâche. Désolé...");
 define('TXT_TASKER_NEWTASKSUCCESS', "La tâche a été créée avec succès !");
+
+//---------------------------------------------------------
+// taskCreator.php
+//---------------------------------------------------------
+define('TXT_TASKCREATOR_TITLE', "Titre");
+define('TXT_TASKCREATOR_DATEBEGIN', "Date de début");
+define('TXT_TASKCREATOR_DATEEND', "Date de fin");
+define('TXT_TASKCREATOR_VALID', "Envoyer");
+
+//---------------------------------------------------------
+// Banner
+//---------------------------------------------------------
+define('TXT_BANNER_WELCOME', "Bienvenue ");
+define('TXT_BANNER_DISCONNECTION', "Déconnexion");
+define('TXT_BANNER_CREATETASK', "Créer une tâche");
+define('TXT_BANNER_RETURN', "Retour");
 
 //---------------------------------------------------------
 // Fin

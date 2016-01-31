@@ -28,6 +28,24 @@ header
 	width: 40%;
 }
 
+.creator
+{
+	background-color: rgba(99, 99, 99, 0.7);
+	font-family: arial;
+	font-size: 1.5em;
+	color: #fff;
+	width: auto;
+	max-width: 200px;
+	height: 100%;
+	
+}
+
+.creator:hover
+{
+	background-color: rgba(66, 66, 66, 0.7);
+	cursor: pointer;
+}
+
 .deco
 {
 	background-color: rgba(99, 99, 99, 0.7);
