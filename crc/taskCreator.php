@@ -1,5 +1,33 @@
 <!DOCTYPE html>
 <html>
+	<?php
+// cookie's expiration time (1 year)
+	$expire = 365*24*3600; 
+
+//---------------------------------------------------------
+// Cookie for the language
+//---------------------------------------------------------
+	if(isset($_COOKIE['lang']))
+	{
+		$lang = $_COOKIE['lang'];
+	} else { // If no language is declared, attempts to recognize the default language of the browser 
+		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2); 
+	}
+	setcookie('lang', $lang, time() + $expire);  
+
+//---------------------------------------------------------
+// Include of the right language file
+//---------------------------------------------------------	
+	if ($lang=='fr')
+	{           
+		include('../database/lang/fr.php'); 
+	} else { // english is the default language
+		include('../database/lang/en.php'); 
+	}
+/*----------------------------------------------------------------------*/
+/*							Page Main Code								*/
+/*----------------------------------------------------------------------*/
+	?>
 	<head>
 		<meta charset="UTF-8">
 		<title>Tasker</title>
@@ -13,13 +41,13 @@
 	<body>
 		<form id="sheet" action="tasker.php" method="post">
 			<input name="taskCreated" value="true" style="display: none;"/>
-			<input name="title" type="text" placeholder="Title" style="font-size: 35px;"/><br/><br/>
+			<input name="title" type="text" placeholder="<?php echo TXT_TASKCREATOR_TITLE; ?>" style="font-size: 35px;"/><br/><br/>
 			<input name="datedeb" type="date" placeholder="jj/mm/aaaa" value="<?php echo date("d/m/Y"); ?>"/>
-			<div id="date">Date début :</div><br/><br/>
+			<div id="date"><?php echo TXT_TASKCREATOR_DATEBEGIN; ?> :</div><br/><br/>
 			<input name="datefin" type="date" placeholder="jj/mm/aaaa" value="<?php echo date("d/m/Y"); ?>"/>
-			<div id="date">Date fin :</div><br/><br/>
+			<div id="date"><?php echo TXT_TASKCREATOR_DATEEND; ?> :</div><br/><br/>
 			<textarea name="content" maxlength="1024"></textarea><br/>
-			<input type="submit" value="Confirm" style="float: right; margin-top: 10px;"/>
+			<input type="submit" value="<?php echo TXT_TASKCREATOR_SEND; ?>" style="float: right; margin-top: 10px;"/>
 		</form>
 	</body>
 	

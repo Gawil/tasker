@@ -44,6 +44,14 @@ define('TXT_TASKER_NEWTASKFAIL', "Un problème est survenu lors de la création 
 define('TXT_TASKER_NEWTASKSUCCESS', "La tâche a été créée avec succès !");
 
 //---------------------------------------------------------
+// taskCreator.php
+//---------------------------------------------------------
+define('TXT_TASKCREATOR_TITLE', "Titre");
+define('TXT_TASKCREATOR_DATEBEGIN', "Date de début");
+define('TXT_TASKCREATOR_DATEEND', "Date de fin");
+define('TXT_TASKCREATOR_VALID', "Envoyer");
+
+//---------------------------------------------------------
 // Fin
 //---------------------------------------------------------
  	 
