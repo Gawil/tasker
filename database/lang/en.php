@@ -46,6 +46,7 @@ define('TXT_TASKER_NEWTASKSUCCESS', "The task has been created successfully !");
 //---------------------------------------------------------
 // taskCreator.php
 //---------------------------------------------------------
+
 define('TXT_TASKCREATOR_TITLE', "Title");
 define('TXT_TASKCREATOR_DATEBEGIN', "Beginning date");
 define('TXT_TASKCREATOR_DATEEND', "Ending date");
@@ -54,6 +55,7 @@ define('TXT_TASKCREATOR_SEND', "Send");
 //---------------------------------------------------------
 // Banner
 //---------------------------------------------------------
+
 define('TXT_BANNER_WELCOME', "Welcome ");
 define('TXT_BANNER_DISCONNECTION', "Disconnection");
 define('TXT_BANNER_CREATETASK', "New Task");
