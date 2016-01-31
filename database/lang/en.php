@@ -57,9 +57,17 @@ define('TXT_TASKCREATOR_SEND', "Send");
 //---------------------------------------------------------
 
 define('TXT_BANNER_WELCOME', "Welcome ");
-define('TXT_BANNER_DISCONNECTION', "Disconnection");
+define('TXT_BANNER_DISCONNECTION', "Log out");
 define('TXT_BANNER_CREATETASK', "New Task");
 define('TXT_BANNER_RETURN', "Return");
+define('TXT_BANNER_MODIFY', "Modify");
+define('TXT_BANNER_DELETE', "Delete");
+
+//---------------------------------------------------------
+// taskdisplayer.php
+//---------------------------------------------------------
+
+define('TXT_TASKDISPLAYER_POSTIT', "You have no task in this section, please create one :)");
 
 //---------------------------------------------------------
 // Fin
