@@ -124,8 +124,8 @@
 	
 	<header>
 			<div id="menu">	
-				<input type="button" onclick="" style='background-image: url("img/fr.jpeg");'/>
-				<input type="button" onclick="" style='background-image: url("img/en.jpeg");'/>
+				<input type="button" onclick="self.location.href='index.php?lang=fr'" style='background-image: url("img/fr.jpeg");'/>
+				<input type="button" onclick="self.location.href='index.php?lang=en'" style='background-image: url("img/en.jpeg");'/>
 			</div>
 	</header>
 	<body>
