@@ -24,9 +24,9 @@
 //---------------------------------------------------------	
 	if ($lang=='fr')
 	{           
-		include('../database/lang/fr.php'); 
+		include_once('../database/lang/fr.php'); 
 	} else { // english is the default language
-		include('../database/lang/en.php'); 
+		include_once('../database/lang/en.php'); 
 	}
 	setcookie("lang", $lang, time()+$expire,'/');
 ?>
@@ -46,8 +46,8 @@
 	<header>
 		<p style="color: #FFF; font-size: 50px; text-align: left; padding-left: 30px; max-width: 600px; float: left;"><?php echo TXT_BANNER_WELCOME; echo '<span style="color: #f00;">' . $_SESSION['userName'] . '</span>'; ?> !</p>
 		<div id="menu">	
-			<input class="creator" type="button" value="<?php echo TXT_BANNER_RETURN; ?>" onclick="self.location.href='tasker.php'"></input>
-			<input class="deco" type="button" value="<?php echo TXT_BANNER_DISCONNECTION; ?>" onclick="self.location.href='../index.php'"></input>
+			<input class="test" type="button" value="<?php echo TXT_BANNER_RETURN; ?>" onclick="self.location.href='tasker.php'"></input>
+			<input class="test" type="button" value="<?php echo TXT_BANNER_DISCONNECTION; ?>" onclick="self.location.href='../index.php'"></input>
 		</div>
 	</header>
 	

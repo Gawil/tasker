@@ -52,9 +52,17 @@ define('TXT_TASKCREATOR_VALID', "Envoyer");
 // Banner
 //---------------------------------------------------------
 define('TXT_BANNER_WELCOME', "Bienvenue ");
-define('TXT_BANNER_DISCONNECTION', "Déconnexion");
+define('TXT_BANNER_DISCONNECTION', "Se déconnecter");
 define('TXT_BANNER_CREATETASK', "Créer une tâche");
 define('TXT_BANNER_RETURN', "Retour");
+define('TXT_BANNER_MODIFY', "Modifier");
+define('TXT_BANNER_DELETE', "Supprimer");
+
+//---------------------------------------------------------
+// taskdisplayer.php
+//---------------------------------------------------------
+
+define('TXT_TASKDISPLAYER_POSTIT', "Vous n'avez pas de tâche dans cette section, veuillez en créer :)");
 
 //---------------------------------------------------------
 // Fin
