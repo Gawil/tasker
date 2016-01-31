@@ -16,8 +16,6 @@
 	{
 		$lang = $_GET['lang'];
 	}
-	echo $lang;
-	echo $_COOKIE['lang'];
 
 //---------------------------------------------------------
 // Include of the right language file
