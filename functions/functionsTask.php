@@ -126,5 +126,9 @@ function clear_database() {
 	foreach ($tasks as $item) {
 		unlink("../database/todo/$item");
 	}
+	unlink("../database/email");
+	unlink("../database/passwd");
+	touch("../database/email");
+	touch("../database/passwd");
 }
 ?>

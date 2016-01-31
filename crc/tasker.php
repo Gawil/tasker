@@ -77,7 +77,7 @@
 		<div class="container">
 			
 			<div class="postcontainer" id ="todocontainer">
-				<div class="postit" id="todo" onclick="displayCurrentTask(1, id);">
+				<div class="postit" id="todo" onclick="displayCurrentTask(1);">
 					<br />
 					<h1 style="font-size: 40px; text-align: center; margin: 0px;"><?php echo TXT_TASKER_TODO; ?></h1>
 					<br />
@@ -88,7 +88,7 @@
 				<input type="button" value="<?php echo TXT_TASKER_NEXT; ?>" onclick="displayNextTodo();"></input>
 			</div>
 			<div class="postcontainer" id ="wipcontainer">
-				<div class="postit" id="wip" onclick="displayCurrentTask(2, id);">
+				<div class="postit" id="wip" onclick="displayCurrentTask(2);">
 					<br />
 					<h1 style="font-size: 40px; text-align: center; margin: 0px;"><?php echo TXT_TASKER_WIP; ?></h1>
 					<br />
@@ -99,7 +99,7 @@
 				<input type="button" value="<?php echo TXT_TASKER_NEXT; ?>" onclick="displayNextWIP();"></input>
 			</div>
 			<div class="postcontainer" id ="donecontainer">
-				<div class="postit" id="done" onclick="displayCurrentTask(3, id);">
+				<div class="postit" id="done" onclick="displayCurrentTask(3);">
 					<br />
 					<h1 style="font-size: 40px; text-align: center; margin: 0px;"><?php echo TXT_TASKER_DONE; ?></h1>
 					<br />
@@ -110,7 +110,7 @@
 				<input type="button" value="<?php echo TXT_TASKER_NEXT; ?>" onclick="displayNextDone();"></input>
 			</div>
 			<div class="postcontainer" id ="deadcontainer">
-				<div class="postit" id="dead" onclick="displayCurrentTask(4, id);">
+				<div class="postit" id="dead" onclick="displayCurrentTask(4);">
 					<br />
 					<h1 style="font-size: 40px; text-align: center; margin: 0px;"><?php echo TXT_TASKER_DEAD; ?></h1>
 					<br />

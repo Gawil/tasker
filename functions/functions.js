@@ -32,20 +32,22 @@ function displayNextDead() {
 		}
 	);
 }
-function displayCurrentTask(i, idd) {
-	switch(i) {
-		case 1:
-			document.location.href = "task.php?fold=todo&id="+idd;
-			break;
-		case 2:
-			document.location.href = "task.php?fold=wip&id="+idd;
-			break;
-		case 3:
-			document.location.href = "task.php?fold=done&id="+idd;
-			break;
-		case 4:
-			document.location.href = "task.php?fold=dead&id="+idd;
-			break;
-		default:
-	} 
+function displayCurrentTask(i) {
+	if(id) {
+		switch(i) {
+			case 1:
+				document.location.href = "task.php?fold=todo&id="+id;
+				break;
+			case 2:
+				document.location.href = "task.php?fold=wip&id="+id;
+				break;
+			case 3:
+				document.location.href = "task.php?fold=done&id="+id;
+				break;
+			case 4:
+				document.location.href = "task.php?fold=dead&id="+id;
+				break;
+			default:
+		}
+	}
 }
