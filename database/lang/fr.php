@@ -48,6 +48,8 @@ define('TXT_TASKCREATOR_DATEBEGIN', "Date de début");
 define('TXT_TASKCREATOR_DATEEND', "Date de fin");
 define('TXT_TASKCREATOR_VALID', "Envoyer");
 
+define('TXT_TASKER', "Gestionnaire de tâche");
+
 //---------------------------------------------------------
 // Banner
 //---------------------------------------------------------

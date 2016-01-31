@@ -52,6 +52,8 @@ define('TXT_TASKCREATOR_DATEBEGIN', "Beginning date");
 define('TXT_TASKCREATOR_DATEEND', "Ending date");
 define('TXT_TASKCREATOR_SEND', "Send");
 
+define('TXT_TASKER', "Tasker");
+
 //---------------------------------------------------------
 // Banner
 //---------------------------------------------------------

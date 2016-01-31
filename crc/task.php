@@ -46,7 +46,7 @@
 ?>
 	<head>
 		<meta charset="UTF-8">
-		<title>Tasker</title>
+		<title><?php echo TXT_TASKER; ?></title>
 		<link rel="stylesheet" href="../css/task.css">
 	</head>
 	

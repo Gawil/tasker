@@ -66,7 +66,7 @@
 ?>
 	<head>
 		<meta charset="UTF-8">
-		<title>Tasker</title>
+		<title><?php echo TXT_TASKER; ?></title>
 		<link rel="stylesheet" href="../css/tasker.css">
 		<link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css">
 	</head>

@@ -36,7 +36,7 @@
 	?>
 	<head>
 		<meta charset="UTF-8">
-		<title>Tasker</title>
+		<title><?php echo TXT_TASKER; ?></title>
 		<link rel="stylesheet" href="../css/taskCreator.css">
 	</head>
 	
@@ -47,16 +47,15 @@
 			<input class="test" type="button" value="<?php echo TXT_BANNER_DISCONNECTION; ?>" onclick="self.location.href='../index.php'"></input>
 		</div>
 	</header>
-	
 	<body>
 		<form id="sheet" action="tasker.php" method="post">
 			<input name="taskCreated" value="true" style="display: none;"/>
-			<input name="title" type="text" placeholder="<?php echo TXT_TASKCREATOR_TITLE; ?>" style="font-size: 35px; border: none;"/><br/><br/>
-			<input name="datedeb" type="date" placeholder="jj/mm/aaaa" value="<?php echo date("d/m/Y"); ?>"/>
+			<input name="title" type="text" placeholder="<?php echo TXT_TASKCREATOR_TITLE; ?>" style="font-size: 35px; border: none;" required/><br/><br/>
+			<input name="datedeb" type="date" placeholder="jj/mm/aaaa" value="<?php echo date("d/m/Y"); ?>" required/>
 			<div id="date"><?php echo TXT_TASKCREATOR_DATEBEGIN; ?> :</div><br/><br/>
 			<input name="datefin" type="date" placeholder="jj/mm/aaaa" value="<?php echo date("d/m/Y"); ?>"/>
 			<div id="date"><?php echo TXT_TASKCREATOR_DATEEND; ?> :</div><br/><br/>
-			<textarea name="content" maxlength="1024"></textarea><br/>
+			<textarea name="content" maxlength="1024" required></textarea><br/>
 			<input type="submit" value="<?php echo TXT_TASKCREATOR_SEND; ?>" style="float: right; margin-top: 10px;"/>
 		</form>
 	</body>
