@@ -1,4 +1,8 @@
 <?php
+/*----------------------------------------------------------------------*/
+/*						English language file							*/
+/*----------------------------------------------------------------------*/
+
 //---------------------------------------------------------
 // index.php
 //---------------------------------------------------------
@@ -27,12 +31,22 @@ define('TXT_INDEX_ERROR7', "Your password must be between 8 and 20 characters");
 //---------------------------------------------------------
 // tasker.php
 //---------------------------------------------------------
-/*	 
-define('TXT_ACCUEIL_PAGE1', 'Bienvenue sur la page 1 du site PHP Débutant !');
-define('TXT_CONSEIL_PAGE2', 'Installez Linux !');
-*/	 
+
+define('TXT_TASKER_WELCOME', "Welcome ");
+define('TXT_TASKER_TODO', "To Do");
+define('TXT_TASKER_WIP', "Work in Progress");
+define('TXT_TASKER_DONE', "Tasks Done");
+define('TXT_TASKER_DEAD', "Tasks Dead");
+define('TXT_TASKER_NEXT', "NEXT");
+define('TXT_TASKER_NEXTMESSAGE', "Please click <span style=\"color: #f00;\">next</span> to display the next task");
+define('TXT_TASKER_DISCONNECTION', "Disconnection");
+define('TXT_TASKER_CREATETASK', "New Task");
+define('TXT_TASKER_CLEAN', "Clean the data base");
+
+define('TXT_TASKER_NEWTASKFAIL', "A problem occurred during the creation of the task. Sorry...");
+define('TXT_TASKER_NEWTASKSUCCESS', "The task has been created successfully !");
+
 //---------------------------------------------------------
 // Fin
-//---------------------------------------------------------
- 	 
+//---------------------------------------------------------	 
 ?> 
