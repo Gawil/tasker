@@ -45,7 +45,7 @@
 	<body>
 		<form id="sheet" action="tasker.php" method="post">
 			<input name="taskCreated" value="true" style="display: none;"/>
-			<input name="title" type="text" placeholder="<?php echo TXT_TASKCREATOR_TITLE; ?>" style="font-size: 35px;"/><br/><br/>
+			<input name="title" type="text" placeholder="<?php echo TXT_TASKCREATOR_TITLE; ?>" style="font-size: 35px; border: none;"/><br/><br/>
 			<input name="datedeb" type="date" placeholder="jj/mm/aaaa" value="<?php echo date("d/m/Y"); ?>"/>
 			<div id="date"><?php echo TXT_TASKCREATOR_DATEBEGIN; ?> :</div><br/><br/>
 			<input name="datefin" type="date" placeholder="jj/mm/aaaa" value="<?php echo date("d/m/Y"); ?>"/>
