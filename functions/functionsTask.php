@@ -111,21 +111,20 @@ function clear_database() {
 		rmdir_and_contents("../database/users/$item");
 	}
 	$tasks = array_diff(scandir("../database/done"), array('.', '..'));
-	foreach ($files as $item) {
-		if ($item == '.' || $item == '..') continue;
-		unlink("../database/$item);
+	foreach ($tasks as $item) {
+		unlink("../database/done/$item");
 	}
-	foreach (scandir("../database/wip") as $item) {
-		if ($item == '.' || $item == '..') continue;
-		unlink(realpath($item));
+	$tasks = array_diff(scandir("../database/wip"), array('.', '..'));
+	foreach ($tasks as $item) {
+		unlink("../database/wip/$item");
 	}
-	foreach (scandir("../database/dead") as $item) {
-		if ($item == '.' || $item == '..') continue;
-		unlink(realpath($item));
+	$tasks = array_diff(scandir("../database/dead"), array('.', '..'));
+	foreach ($tasks as $item) {
+		unlink("../database/dead/$item");
 	}
-	foreach (scandir("../database/todo") as $item) {
-		if ($item == '.' || $item == '..') continue;
-		unlink(realpath($item));
+	$tasks = array_diff(scandir("../database/todo"), array('.', '..'));
+	foreach ($tasks as $item) {
+		unlink("../database/todo/$item");
 	}
 }
 ?>
