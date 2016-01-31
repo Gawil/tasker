@@ -14,6 +14,39 @@ a,a:visited
 	color: inherit;
 }
 
+header
+{
+	background-color: rgba(99, 99, 99, 0.7);
+	margin-top: 20px;
+	border: inset;
+	border-radius: 5px;
+	min-width: 600px;
+	height: 100px;
+}
+
+#menu
+{
+	background-color: none;
+	position: relative;
+	float: right;
+	height: 100%;
+	width: 40%;
+}
+
+input[type="button"]
+{
+	background-size: 100% 100%;
+	width: 80px;
+	height: 30px;
+	float: right;
+}
+
+input[type="button"]:hover
+{
+	filter: brightness(0.5);
+	cursor: pointer;
+}
+
 body 
 {
 	background-image: url("../img/background.jpeg");

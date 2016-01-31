@@ -21,7 +21,7 @@
 	{
 		$lang = $_COOKIE['lang'];
 	} else { // If no language is declared, attempts to recognize the default language of the browser 
-		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2); 
+		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 	}
 	setcookie('lang', $lang, time() + $expire);  
 
@@ -121,6 +121,13 @@
 		<title><?php echo TXT_INDEX_LOGIN2; ?></title>
 		<link rel="stylesheet" href="css/index.css">
 	</head>
+	
+	<header>
+			<div id="menu">	
+				<input type="button" onclick="" style='background-image: url("img/fr.jpeg");'/>
+				<input type="button" onclick="" style='background-image: url("img/en.jpeg");'/>
+			</div>
+	</header>
 	<body>
 		<div class="container">
 			<div id="login-form">
