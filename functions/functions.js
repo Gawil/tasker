@@ -32,19 +32,19 @@ function displayNextDead() {
 		}
 	);
 }
-function displayCurrentTask(i) {
+function displayCurrentTask(i, idd) {
 	switch(i) {
 		case 1:
-			document.location.href = "task.php?fold=todo&id="+id;
+			document.location.href = "task.php?fold=todo&id="+idd;
 			break;
 		case 2:
-			document.location.href = "task.php?fold=wip&id="+id;
+			document.location.href = "task.php?fold=wip&id="+idd;
 			break;
 		case 3:
-			document.location.href = "task.php?fold=done&id="+id;
+			document.location.href = "task.php?fold=done&id="+idd;
 			break;
 		case 4:
-			document.location.href = "task.php?fold=dead&id="+id;
+			document.location.href = "task.php?fold=dead&id="+idd;
 			break;
 		default:
 	} 
