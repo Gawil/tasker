@@ -26,7 +26,6 @@
 	} else { // english is the default language
 		include_once('../database/lang/en.php'); 
 	}
-	setcookie("lang", $lang, time()+$expire,'/');
 ?>
 <!DOCTYPE html>
 <html>
