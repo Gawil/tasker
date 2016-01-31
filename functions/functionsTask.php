@@ -74,4 +74,58 @@ function date_isInf($date1, $date2) {
 	}
 	return $bool;
 }
+
+/*
+* Insert arbitrary text into any place inside a text file
+*
+* @param string $file_path - absolute path to the file
+* @param string $insert_marker - a marker inside the file to look for as a pattern match
+* @param string $text - text to be inserted
+* @param boolean $after - whether to insert text after (true) or before (false) the marker.
+* By default, the text is inserted after the marker.
+* @return integer - the number of bytes written to the file
+*/
+function insert_into_file($file_path, $insert_marker, $text, $after = true) {
+	$contents = file_get_contents($file_path);
+	$new_contents = preg_replace($insert_marker, ($after) ? '$0' . $text : $text . '$0', $contents);
+	return file_put_contents($file_path, $new_contents);
+}
+
+function rmdir_and_contents($path) {
+	if (is_dir($path) === true) {
+		$files = array_diff(scandir($path), array('.', '..'));
+		foreach ($files as $file) {
+			rmdir_and_contents(realpath($path) . '/' . $file);
+        }
+		return rmdir($path);
+	}
+	else if (is_file($path) === true) {
+		return unlink($path);
+	}
+	return false;
+}
+
+function clear_database() {
+	$folds = array_diff(scandir("../database/users"), array('.', '..'));
+	foreach ($folds as $item) {
+		rmdir_and_contents("../database/users/$item");
+	}
+	$tasks = array_diff(scandir("../database/done"), array('.', '..'));
+	foreach ($files as $item) {
+		if ($item == '.' || $item == '..') continue;
+		unlink("../database/$item);
+	}
+	foreach (scandir("../database/wip") as $item) {
+		if ($item == '.' || $item == '..') continue;
+		unlink(realpath($item));
+	}
+	foreach (scandir("../database/dead") as $item) {
+		if ($item == '.' || $item == '..') continue;
+		unlink(realpath($item));
+	}
+	foreach (scandir("../database/todo") as $item) {
+		if ($item == '.' || $item == '..') continue;
+		unlink(realpath($item));
+	}
+}
 ?>
