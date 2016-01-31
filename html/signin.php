@@ -4,7 +4,7 @@
 			// Champ Username + erreur
 			echo "<input class=\"signin\" type=\"text\" name=\"newUserName\" placeholder=\"".TXT_INDEX_USERNAME."\" required>";
 			
-			if ($errorSubscription != 4 && ($errorSubscription === 2 || $errorSubscription === 3))
+			if ( $errorSubscription === 2 OR $errorSubscription === 3 )
 			{ echo "<p style=\"color: #900; font-size: 12px;\">".TXT_INDEX_ERROR2."</p>"; }
 			
 			if ($errorSubscription === 20 OR $errorSubscription === 30 OR $errorSubscription === 60 OR $errorSubscription === 70)
@@ -13,7 +13,7 @@
 			// Champ Email + erreur
 			echo "<input class=\"signin\" type=\"email\" name=\"newUserMail\" placeholder=\"".TXT_INDEX_MAIL."\" required>";
 			
-			if ($errorSubscription != 4 && ($errorSubscription === 2 || $errorSubscription === 1))
+			if ($errorSubscription === 2 OR $errorSubscription === 1)
 			{ echo "<p style=\"color: #900; font-size: 12px;\">".TXT_INDEX_ERROR3."</p>"; }
 			
 			if ($errorSubscription === 10 OR $errorSubscription === 30 OR $errorSubscription === 50 OR $errorSubscription === 70)

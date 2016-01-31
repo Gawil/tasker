@@ -111,9 +111,7 @@
 					$_SESSION['userName'] = $_POST['newUserName'];
 					setcookie('lastUserName', $_POST['newUserName'], time() + $expire);
 					header('Location: crc/tasker.php');
-				} else {
-					$errorSubscription = 4;
-				}
+				} 
 			}
 		}
 	}
