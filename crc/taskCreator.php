@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html>
-	<?php
+<?php
 // cookie's expiration time (1 year)
 	$expire = 365*24*3600; 
-
+	
 //---------------------------------------------------------
 // Cookie for the language
 //---------------------------------------------------------
-	if(isset($_COOKIE['lang']))
+	$lang = 'en';
+	if( isset($_COOKIE['lang']) )
 	{
 		$lang = $_COOKIE['lang'];
 	} else { // If no language is declared, attempts to recognize the default language of the browser 
-		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2); 
+		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 	}
-	setcookie('lang', $lang, time() + $expire);  
+	if( isset($_GET['lang']) )
+	{
+		$lang = $_GET['lang'];
+	}
+	echo $lang;
+	echo $_COOKIE['lang'];
 
 //---------------------------------------------------------
 // Include of the right language file
@@ -24,7 +28,11 @@
 	} else { // english is the default language
 		include('../database/lang/en.php'); 
 	}
-	
+	setcookie("lang", $lang, time()+$expire,'/');
+?>
+<!DOCTYPE html>
+<html>
+<?php
 /*----------------------------------------------------------------------*/
 /*							Page Main Code								*/
 /*----------------------------------------------------------------------*/
