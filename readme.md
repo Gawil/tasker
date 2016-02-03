@@ -6,9 +6,6 @@ The database folder must be like this :</p>
 <p>./database/ :<br/>
 ---- ./database/dead/<br/>
 ---- ./database/done/<br/>
----- ./database/lang/ :<br/>
--------- ./database/lang/en.php<br/>
--------- ./database/lang/fr.php<br/>
 ---- ./database/todo/<br/>
 ---- ./database/users/<br/>
 ---- ./database/wip/<br/>
