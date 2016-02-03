@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html >
 <?php
 //---------------------------------------------------------
 // Initialization
@@ -47,10 +49,7 @@
 			include_once('database/lang/en.php'); 
 	}
 	setcookie("lang", $lang, time()+$expire);
-?>
-<!DOCTYPE html>
-<html >
-<?php
+
 /*----------------------------------------------------------------------*/
 /*							Page Main Code								*/
 /*----------------------------------------------------------------------*/
@@ -77,7 +76,7 @@
 	{		
 		if ( isset($_POST['userName']) AND isset($_POST['passwd']) ) 
 		{	
-			if ( strlen($_POST['userName'])>=3 AND strlen($_POST['userName'])<=20 AND strlen($_POST['passwd'])>=8 AND strlen($_POST['passwd'])<=20 ) 
+			if ( strlen($_POST['userName'])>=3 AND strlen($_POST['userName'])<=20 AND strlen($_POST['passwd'])>=5 AND strlen($_POST['passwd'])<=20 ) 
 			{		
 				$userInfo=getUserPasswd($_POST['userName']);
 				if( $userInfo && sha1(sha1($_POST['passwd']). $salt) === $userInfo['hash'] ) 
@@ -108,7 +107,7 @@
 			{
 				$errorSubscription = $errorSubscription+20;
 			}
-			if ( strlen($_POST['newUserPasswd'])<8 OR strlen($_POST['newUserPasswd'])>20 OR strlen($_POST['newUserPasswdBis'])<8 OR strlen($_POST['newUserPasswdBis'])>20 )	
+			if ( strlen($_POST['newUserPasswd'])<5 OR strlen($_POST['newUserPasswd'])>20 OR strlen($_POST['newUserPasswdBis'])<5 OR strlen($_POST['newUserPasswdBis'])>20 )	
 			{
 				$errorSubscription = $errorSubscription+40;
 			}
@@ -158,5 +157,6 @@
 				?>
 			</div>
 		</div>
+		<input class="test" type="button" value="<?php echo TXT_BANNER_GENERATEDB; ?>" onclick="self.location.href='init.php'"/>
 	</body>
 </html>

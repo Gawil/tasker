@@ -26,7 +26,7 @@ define('TXT_INDEX_ERROR3', "Cette adresse est déjà utilisée");
 define('TXT_INDEX_ERROR4', "Les deux mots de passe doivent correspondre !");
 define('TXT_INDEX_ERROR5', "Votre nom d'utilisateur doit faire entre 3 et 20 caractères");
 define('TXT_INDEX_ERROR6', "Votre adresse mail doit faire entre 5 et 50 caractères");
-define('TXT_INDEX_ERROR7', "Votre mot de passe doit faire entre 8 et 20 caractères");
+define('TXT_INDEX_ERROR7', "Votre mot de passe doit faire entre 5 et 20 caractères");
 
 //---------------------------------------------------------
 // tasker.php
@@ -69,6 +69,7 @@ define('TXT_BANNER_CREATETASK', "Créer une tâche");
 define('TXT_BANNER_RETURN', "Retour");
 define('TXT_BANNER_MODIFY', "Modifier");
 define('TXT_BANNER_DELETE', "Supprimer");
+define('TXT_BANNER_GENERATEDB', "Générer la BDD");
 
 //---------------------------------------------------------
 // taskdisplayer.php

@@ -33,6 +33,23 @@ header
 	width: 40%;
 }
 
+.test
+{
+	background-color: rgba(99, 99, 99, 0.7);
+	font-family: arial;
+	font-size: 1.5em;
+	color: #fff;
+	width: auto;
+	max-width: 200px;
+	top: 90%;
+}
+
+.test:hover
+{
+	background-color: rgba(66, 66, 66, 0.7);
+	cursor: pointer;
+}
+
 .flag
 {
 	background-size: 100% 100%;
