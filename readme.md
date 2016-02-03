@@ -3,7 +3,7 @@
 <p>Apache server must have read and write permissions on database folder AND every file it contains.
 The database folder must be like this :</p>
 
-./database/ :
+./database/ :<br/>
   ./database/dead/
   ./database/done/
   ./database/lang/ :
