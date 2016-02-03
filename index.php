@@ -43,10 +43,10 @@
 //---------------------------------------------------------	
 	if ($lang =='fr') {
 		if (!defined('INCLUDED'))
-			include_once('database/lang/fr.php'); 
+			include_once('lang/fr.php'); 
 	} else { // english is the default language
 		if (!defined('INCLUDED'))
-			include_once('database/lang/en.php'); 
+			include_once('lang/en.php'); 
 	}
 	setcookie("lang", $lang, time()+$expire);
 

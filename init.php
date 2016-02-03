@@ -7,8 +7,6 @@
 		mkdir("database/dead", 0755);
 	if (!file_exists("database/done"))
 		mkdir("database/done", 0755);
-	if (!file_exists("database/lang"))
-		mkdir("database/lang", 0755);
 	if (!file_exists("database/todo"))
 		mkdir("database/todo", 0755);
 	if (!file_exists("database/users"))
