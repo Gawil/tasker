@@ -17,3 +17,5 @@ The database folder must be like this :</p>
 ---- ./database/email<br/>
 ---- ./databse/passwd</p><br/>
 
+To generate the database, click on "Generate database" on the home page.<br/>
+Please, make sure apache has write permission on the folder containing database before clicking the button !
