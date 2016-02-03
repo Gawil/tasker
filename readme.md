@@ -4,7 +4,7 @@
 The database folder must be like this :</p>
 
 <p>./database/ :<br/>
-  <li>./database/dead/</li>
+&nbsp;./database/dead/
   ./database/done/
   ./database/lang/ :
     ./database/lang/en.php
