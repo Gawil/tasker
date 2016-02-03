@@ -3,8 +3,8 @@
 <p>Apache server must have read and write permissions on database folder AND every file it contains.
 The database folder must be like this :</p>
 
-./database/ :<br/>
-  ./database/dead/
+<p>./database/ :<br/>
+  <li>./database/dead/</li>
   ./database/done/
   ./database/lang/ :
     ./database/lang/en.php
@@ -15,5 +15,5 @@ The database folder must be like this :</p>
   
   ./database/config
   ./database/email
-  ./databse/passwd
+  ./databse/passwd</p>
 
