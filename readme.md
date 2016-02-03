@@ -4,16 +4,16 @@
 The database folder must be like this :</p>
 
 <p>./database/ :<br/>
-&nbsp;&nbsp;./database/dead/
-&nbsp;&nbsp;./database/done/
-&nbsp;&nbsp;./database/lang/ :
-&nbsp;&nbsp;&nbsp;&nbsp;./database/lang/en.php
-&nbsp;&nbsp;&nbsp;&nbsp;./database/lang/fr.php
-&nbsp;&nbsp;./database/todo/
-&nbsp;&nbsp;./database/users/
-&nbsp;&nbsp;./database/wip/
-  
-&nbsp;&nbsp;./database/config
-&nbsp;&nbsp;./database/email
-&nbsp;&nbsp;./databse/passwd</p>
+&nbsp;&nbsp;./database/dead/<br/>
+&nbsp;&nbsp;./database/done/<br/>
+&nbsp;&nbsp;./database/lang/ :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;./database/lang/en.php<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;./database/lang/fr.php<br/>
+&nbsp;&nbsp;./database/todo/<br/>
+&nbsp;&nbsp;./database/users/<br/>
+&nbsp;&nbsp;./database/wip/<br/>
+<br/>
+&nbsp;&nbsp;./database/config<br/>
+&nbsp;&nbsp;./database/email<br/>
+&nbsp;&nbsp;./databse/passwd</p><br/>
 
