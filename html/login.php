@@ -5,8 +5,9 @@
 		<?php
 			if ($errorLogin === 1) {
 				$_SESSION['userName'] = $_POST['userName'];
-				setcookie('lastUserName', $_POST['userName'], time() + $expire);  
-				header('Location: crc/tasker.php');
+				setcookie('lastUserName', $_POST['userName'], time() + $expire); 
+				session_start();
+				header('Location: tasker.php');
 			} 
 			elseif ($errorLogin === 2) {
 				echo "<p style=\"color: #900; font-size: 13px;\">".TXT_INDEX_ERROR1."</p>";

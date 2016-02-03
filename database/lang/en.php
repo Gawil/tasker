@@ -3,6 +3,8 @@
 /*						English language file							*/
 /*----------------------------------------------------------------------*/
 
+define('INCLUDED', true);
+
 //---------------------------------------------------------
 // index.php
 //---------------------------------------------------------
@@ -41,7 +43,14 @@ define('TXT_TASKER_NEXTMESSAGE', "Please click <span style=\"color: #f00;\">next
 define('TXT_TASKER_CLEAN', "Clean the data base");
 
 define('TXT_TASKER_NEWTASKFAIL', "A problem occurred during the creation of the task. Sorry...");
-define('TXT_TASKER_NEWTASKSUCCESS', "The task has been created successfully !");
+define('TXT_TASKER_NEWTASKSUCCESS', "The task has been successfully created !");
+
+define('TXT_TASKER_DELETETASKFAIL', "A problem occurred during the deletion of the task. Sorry...");
+define('TXT_TASKER_DELETETASKSUCCESS', "The task has been successfully deleted !");
+
+define('TXT_BANNER_CLEARDB', "Clear DB");
+
+define('TXT_TASKER', "Tasker");
 
 //---------------------------------------------------------
 // taskCreator.php
@@ -51,8 +60,7 @@ define('TXT_TASKCREATOR_TITLE', "Title");
 define('TXT_TASKCREATOR_DATEBEGIN', "Beginning date");
 define('TXT_TASKCREATOR_DATEEND', "Ending date");
 define('TXT_TASKCREATOR_SEND', "Send");
-
-define('TXT_TASKER', "Tasker");
+define('TXT_TASKCREATOR_TASKFINISHED', "Task finished");
 
 //---------------------------------------------------------
 // Banner
@@ -74,4 +82,5 @@ define('TXT_TASKDISPLAYER_POSTIT', "You have no task in this section, please cre
 //---------------------------------------------------------
 // Fin
 //---------------------------------------------------------	 
+
 ?> 

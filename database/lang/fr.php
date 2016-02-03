@@ -3,6 +3,8 @@
 /*						French language file							*/
 /*----------------------------------------------------------------------*/
 
+define('INCLUDED', true);
+
 //---------------------------------------------------------
 // index.php
 //---------------------------------------------------------
@@ -40,19 +42,27 @@ define('TXT_TASKER_CLEAN', "Nettoyer la base de donnée");
 define('TXT_TASKER_NEWTASKFAIL', "Un problème est survenu lors de la création de la tâche. Désolé...");
 define('TXT_TASKER_NEWTASKSUCCESS', "La tâche a été créée avec succès !");
 
-//---------------------------------------------------------
-// taskCreator.php
-//---------------------------------------------------------
-define('TXT_TASKCREATOR_TITLE', "Titre");
-define('TXT_TASKCREATOR_DATEBEGIN', "Date de début");
-define('TXT_TASKCREATOR_DATEEND', "Date de fin");
-define('TXT_TASKCREATOR_VALID', "Envoyer");
+define('TXT_TASKER_DELETETASKFAIL', "Un problème est survenu lors de la suppression de la tâche. Désolé...");
+define('TXT_TASKER_DELETETASKSUCCESS', "La tâche a été supprimée avec succès !");
+
+define('TXT_BANNER_CLEARDB', "Nettoyer BDD");
 
 define('TXT_TASKER', "Gestionnaire de tâche");
 
 //---------------------------------------------------------
+// taskCreator.php
+//---------------------------------------------------------
+
+define('TXT_TASKCREATOR_TITLE', "Titre");
+define('TXT_TASKCREATOR_DATEBEGIN', "Date de début");
+define('TXT_TASKCREATOR_DATEEND', "Date de fin");
+define('TXT_TASKCREATOR_SEND', "Envoyer");
+define('TXT_TASKCREATOR_TASKFINISHED', "Tâche terminée");
+
+//---------------------------------------------------------
 // Banner
 //---------------------------------------------------------
+
 define('TXT_BANNER_WELCOME', "Bienvenue ");
 define('TXT_BANNER_DISCONNECTION', "Se déconnecter");
 define('TXT_BANNER_CREATETASK', "Créer une tâche");

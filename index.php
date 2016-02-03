@@ -1,5 +1,13 @@
 <?php
 //---------------------------------------------------------
+// Initialization
+//---------------------------------------------------------
+
+	if(isset($_SESSION['userName'])) {
+		session_destroy();
+	}
+		
+//---------------------------------------------------------
 // Cookie for the last username used
 //---------------------------------------------------------
 	if(isset($_COOKIE['lastUserName']))
@@ -26,17 +34,19 @@
 	{
 		$lang = $_GET['lang'];
 	}
-
+	
+	
 //---------------------------------------------------------
 // Include of the right language file
 //---------------------------------------------------------	
-	if ($lang=='fr')
-	{           
-		include('database/lang/fr.php'); 
+	if ($lang =='fr') {
+		if (!defined('INCLUDED'))
+			include_once('database/lang/fr.php'); 
 	} else { // english is the default language
-		include('database/lang/en.php'); 
+		if (!defined('INCLUDED'))
+			include_once('database/lang/en.php'); 
 	}
-	setcookie("lang", $lang, time()+$expire,'/');
+	setcookie("lang", $lang, time()+$expire);
 ?>
 <!DOCTYPE html>
 <html >
@@ -44,7 +54,7 @@
 /*----------------------------------------------------------------------*/
 /*							Page Main Code								*/
 /*----------------------------------------------------------------------*/
-	include( 'functions/functionsUser.php');
+	include_once( 'functions/functionsUser.php');
 	$errorLogin = NULL;
 	$errorSubscription = 0;
 	$salt = "@68s?qed";
@@ -110,7 +120,8 @@
 					registerUser( $_POST['newUserName'], $_POST['newUserMail'], $_POST['newUserPasswd'], $salt );
 					$_SESSION['userName'] = $_POST['newUserName'];
 					setcookie('lastUserName', $_POST['newUserName'], time() + $expire);
-					header('Location: crc/tasker.php');
+					session_start();
+					header('Location: tasker.php');
 				} 
 			}
 		}
@@ -128,8 +139,8 @@
 	
 	<header>
 			<div id="menu">	
-				<input type="button" onclick="self.location.href='index.php?lang=fr'" style='background-image: url("img/fr.jpeg");'/>
-				<input type="button" onclick="self.location.href='index.php?lang=en'" style='background-image: url("img/en.jpeg");'/>
+				<input class="flag" type="button" onclick="self.location.href='index.php?lang=fr'" style='background-image: url("img/fr.jpeg");'/>
+				<input class="flag" type="button" onclick="self.location.href='index.php?lang=en'" style='background-image: url("img/en.jpeg");'/>
 			</div>
 	</header>
 	<body>

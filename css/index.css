@@ -33,7 +33,7 @@ header
 	width: 40%;
 }
 
-input[type="button"]
+.flag
 {
 	background-size: 100% 100%;
 	width: 80px;
@@ -41,7 +41,7 @@ input[type="button"]
 	float: right;
 }
 
-input[type="button"]:hover
+.flag:hover
 {
 	filter: brightness(0.5);
 	cursor: pointer;

@@ -42,12 +42,12 @@ function checkExistingUser( $userName, $userMail )
 			$line=fgets($file);
 			$line=substr($line,0,strlen($line)-1);
 			if ( $line === $userMail ) {
-				$retour = 1;	// e-mail adress already used
+				$retour = 1;	// e-mail address already used
 			}
 		}
 		if ( file_exists("database/users/$userName") ) {
 			if ( $retour === 1 ) {
-				$retour = 2;	// e-mail adress and login already used
+				$retour = 2;	// e-mail address and login already used
 			}
 			else {
 				$retour = 3;	// login already used
